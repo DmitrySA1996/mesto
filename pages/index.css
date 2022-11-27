@@ -33,12 +33,12 @@
 
 /* секция profile-----------------------------------------------------------------------------*/
 @import url(../blocks/close-popup/close-popup.css);
-@import url(../blocks/popup__bg/popup.css);
+@import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__edit-profile/popup__edit-profile.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
-@import url(../blocks/label/label.css);
-@import url(../blocks/label/__text/label__text.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__text/popup__text.css);
 /* ------------------------------------------------------------------------------------------*/
 
 
