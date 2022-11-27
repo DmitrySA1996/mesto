@@ -31,8 +31,8 @@ function handleFormSubmit(event) {
     // Находим поля формы в DOM
     let popup = document.querySelector('.popup');
     let popupContainer = document.querySelector('.popup__container');
-    let nameInput = popupContainer.querySelector('.name');
-    let infoInput = popupContainer.querySelector('.info');
+    let nameInput = popupContainer.querySelector('.label__text_name');
+    let infoInput = popupContainer.querySelector('.label__text_info');
 
     let profile = document.querySelector('.profile');
     let profileAvatar = profile.querySelector('.profile__avatar');
