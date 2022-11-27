@@ -1,0 +1,12 @@
+.label__text {
+    margin: 0 0 30px 0;
+    padding: 0 0 13px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
