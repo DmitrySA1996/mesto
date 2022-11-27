@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <script async src="./scripts/index.js"></script>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="main">
+    <div class="page">
+        <header class="header">
+            <div class="header__main">
+                <img class="header__logo" src="images/logo__mesto_header.svg" alt="Место">
+            </div>
+        </header>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__avatar">
+                    <img class="profile__image" src="images/AVATAR.jpg" alt="Аватар">
+                    <div class="profile__text">
+                        <h1 class="title">Жак-Ив-Кусто</h1>
+                        <p class="subtitle">Исследователь океана</p>
+                    </div>
+                    <button type="button" name="button" class="profile__rectangle open-popup hover-opacity"></button>
+                </div>
+                <button class="profile__add-button hover-opacity"></button>
+            </section>
+            <div class="popup">
+                <button class="close-popup hover-opacity"></button>
+                <form class="popup__container">
+                    <h2 class="popup__edit-profile">Редактировать профиль</h2>
+                    <input type="text" name="name" value="Жак-Ив Кусто" class="label__text name">
+                    <input type="text" name="info" value="Исследователь океана" class="label__text info">
+                    <button type="submit" class="popup__submit">Сохранить</button>
+                </form>
+            </div>
+            <section class="elements">
+                <ul class="elements__cards">
+                    <li class="elements__card">
+                        <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg"
+                            alt="Суши с лососем">
+                        <div class="elements__texts">
+                            <h2 class="elements__text">Суши с лососем</h2>
+                            <button class="elements__like hover-opacity"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="Креветки">
+                        <div class="elements__texts">
+                            <h2 class="elements__text">Креветки</h2>
+                            <button class="elements__like hover-opacity"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__image" src="images/ahtziri-lagarde-BM8-NSCj9yA-unsplash.jpg" alt="Ролл">
+                        <div class="elements__texts">
+                            <h2 class="elements__text">Ролл</h2>
+                            <button class="elements__like hover-opacity"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="Креветки">
+                        <div class="elements__texts">
+                            <h2 class="elements__text">Креветки</h2>
+                            <button class="elements__like hover-opacity"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__image" src="images/ahtziri-lagarde-BM8-NSCj9yA-unsplash.jpg" alt="Ролл">
+                        <div class="elements__texts">
+                            <h2 class="elements__text">Ролл</h2>
+                            <button class="elements__like hover-opacity"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg"
+                            alt="Суши с лососем">
+                        <div class="elements__texts">
+                            <h2 class="elements__text">Суши с лососем</h2>
+                            <button class="elements__like hover-opacity"></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2020 Mesto Russia</p>
+        </footer>
+    </div>
+</body>
+
+</html>
