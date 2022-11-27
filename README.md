@@ -1,5 +1,6 @@
-# Проект: Путешествие по России
-![lead](https://user-images.githubusercontent.com/114693652/200922520-e8c548b7-a38c-4a7e-a325-67b7a71ad20e.png)
+# Проект: Место
+![Снимок4](https://user-images.githubusercontent.com/114693652/204156834-166e32ef-2785-4b53-bbe4-09388d90ffd3.PNG)
+
 
 *© Сенченко Д.А.*
 
