@@ -1,13 +1,6 @@
 .profile__edit {
     display: flex;
     flex-direction: row;
-    opacity: 1;
-    transition-duration: 3s;
-}
-
-.profile__edit:hover {
-    opacity: 0.6;
-    transition-duration: 3s;
 }
 
 @media screen and (max-width: 597px) {
