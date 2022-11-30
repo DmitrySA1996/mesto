@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <script async src="./scripts/index.js"></script>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -22,24 +21,14 @@
                     <img class="profile__image" src="images/AVATAR.jpg" alt="Аватар">
                     <div class="profile__edit">
                         <div class="profile__text">
-                            <h1 class="title">Жак-Ив-Кусто</h1>
-                            <p class="subtitle">Исследователь океана</p>
+                            <h1 class="profile__title">Жак-Ив-Кусто</h1>
+                            <p class="profile__subtitle">Исследователь океана</p>
                         </div>
-                        <button type="button" name="button"
-                            class="profile__rectangle open-popup hover-opacity"></button>
+                        <button type="button" name="button" class="profile__edit-text"></button>
                     </div>
                 </div>
-                <button class="profile__add-button hover-opacity"></button>
+                <button type="button" name="button" class="profile__add-button"></button>
             </section>
-            <div class="popup">
-                <button class="close-popup hover-opacity"></button>
-                <form class="popup__container">
-                    <h2 class="popup__edit-profile">Редактировать профиль</h2>
-                    <input type="text" name="name" value="Жак-Ив Кусто" class="popup__text popup__text_name">
-                    <input type="text" name="info" value="Исследователь океана" class="popup__text popup__text_info">
-                    <button type="submit" class="popup__submit">Сохранить</button>
-                </form>
-            </div>
             <section class="elements">
                 <ul class="elements__cards">
                     <li class="elements__card">
@@ -47,35 +36,35 @@
                             alt="Суши с лососем">
                         <div class="elements__texts">
                             <h2 class="elements__text">Суши с лососем</h2>
-                            <button class="elements__like hover-opacity"></button>
+                            <button type="button" name="button" class="elements__like"></button>
                         </div>
                     </li>
                     <li class="elements__card">
                         <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="Креветки">
                         <div class="elements__texts">
                             <h2 class="elements__text">Креветки</h2>
-                            <button class="elements__like hover-opacity"></button>
+                            <button type="button" name="button" class="elements__like"></button>
                         </div>
                     </li>
                     <li class="elements__card">
                         <img class="elements__image" src="images/ahtziri-lagarde-BM8-NSCj9yA-unsplash.jpg" alt="Ролл">
                         <div class="elements__texts">
                             <h2 class="elements__text">Ролл</h2>
-                            <button class="elements__like hover-opacity"></button>
+                            <button type="button" name="button" class="elements__like"></button>
                         </div>
                     </li>
                     <li class="elements__card">
                         <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="Креветки">
                         <div class="elements__texts">
                             <h2 class="elements__text">Креветки</h2>
-                            <button class="elements__like hover-opacity"></button>
+                            <button type="button" name="button" class="elements__like"></button>
                         </div>
                     </li>
                     <li class="elements__card">
                         <img class="elements__image" src="images/ahtziri-lagarde-BM8-NSCj9yA-unsplash.jpg" alt="Ролл">
                         <div class="elements__texts">
                             <h2 class="elements__text">Ролл</h2>
-                            <button class="elements__like hover-opacity"></button>
+                            <button type="button" name="button" class="elements__like"></button>
                         </div>
                     </li>
                     <li class="elements__card">
@@ -83,16 +72,28 @@
                             alt="Суши с лососем">
                         <div class="elements__texts">
                             <h2 class="elements__text">Суши с лососем</h2>
-                            <button class="elements__like hover-opacity"></button>
+                            <button type="button" name="button" class="elements__like"></button>
                         </div>
                     </li>
                 </ul>
             </section>
+            <div class="popup">
+                <div class="popup__container">
+                <button type="button" name="button" class="popup__close"></button>
+                <form name="form" class="popup__form">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <input type="text" name="name" value="Жак-Ив Кусто" class="popup__text popup__type_title">
+                    <input type="text" name="info" value="Исследователь океана" class="popup__text popup__type_subtitle">
+                    <button type="submit" class="popup__submit">Сохранить</button>
+                </form>
+            </div>
+            </div>
         </main>
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
     </div>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
