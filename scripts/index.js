@@ -7,8 +7,8 @@ const profileEditText = document.querySelector('.profile__edit-text');
 const title = document.querySelector('.profile__title');
 const subtitle = document.querySelector('.profile__subtitle');
 
-const nameInput = document.querySelector('.popup__type_title');
-const infoInput = document.querySelector('.popup__type_subtitle');
+const nameInput = document.querySelector('.popup__name_title');
+const infoInput = document.querySelector('.popup__name_subtitle');
 
 const elementsLike = document.querySelectorAll('elements__like');
 
