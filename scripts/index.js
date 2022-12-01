@@ -3,6 +3,7 @@ const popupContainer = popup.querySelector('.popup__container');
 const openPopupButtons = document.querySelector('.popup_opened');
 const closePopupButton = document.querySelector('.popup__close');
 const profileEditText = document.querySelector('.profile__edit-text');
+const popupForm = popupContainer.querySelector('.popup__form');
 
 const title = document.querySelector('.profile__title');
 const subtitle = document.querySelector('.profile__subtitle');
@@ -12,27 +13,25 @@ const infoInput = document.querySelector('.popup__text_type_subtitle');
 
 const elementsLike = document.querySelectorAll('elements__like');
 
-function OpenPopup() {
-    popup.classList.add('popup_opened'); // Добавляем класс 'active' для фона
+function openPopup() {
+    popup.classList.add('popup_opened');
+    nameInput.value = title.textContent;
+    infoInput.value = subtitle.textContent;
 };
 
-function ClosePopup() {
-    popup.classList.remove('popup_opened'); // Добавляем класс 'active' для фона
+function closePopup() {
+    popup.classList.remove('popup_opened');
 };
 
-profileEditText.onclick = OpenPopup;
-closePopupButton.onclick = ClosePopup;
+profileEditText.addEventListener('click', openPopup);
+closePopupButton.addEventListener('click', closePopup);
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
 function handleFormSubmit(event) {
     event.preventDefault();
 
     title.textContent = nameInput.value;
     subtitle.textContent = infoInput.value;
-    document.addEventListener('submit', ClosePopup);
+    popup.classList.remove('popup_opened');
 };
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-popupContainer.addEventListener('submit', handleFormSubmit);
+popupForm.addEventListener('submit', handleFormSubmit);
