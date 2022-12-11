@@ -16,9 +16,3 @@
     opacity: 0.5;
     transition-duration: 3s;
 }
-
-.elements__like:focus {
-    display: inline-block;
-    background-image: url('../../../images/likeBlack.svg');
-    opacity: 1;
-}
