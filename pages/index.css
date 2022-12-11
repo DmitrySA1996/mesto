@@ -43,6 +43,7 @@
 @import url(../blocks/elements/__texts/elements__texts.css);
 @import url(../blocks/elements/__text/elements__text.css);
 @import url(../blocks/elements/__like/elements__like.css);
+@import url(../blocks/elements/__like/_active/elements__like_active.css);
 /* ------------------------------------------------------------------------------------------*/
 
 

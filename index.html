@@ -31,62 +31,28 @@
             </section>
             <section class="elements">
                 <ul class="elements__cards">
-                    <li class="elements__card">
-                        <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg"
-                            alt="Суши с лососем">
-                        <div class="elements__texts">
-                            <h2 class="elements__text">Суши с лососем</h2>
-                            <button type="button" class="elements__like"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="Креветки">
-                        <div class="elements__texts">
-                            <h2 class="elements__text">Креветки</h2>
-                            <button type="button" class="elements__like"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__image" src="images/ahtziri-lagarde-BM8-NSCj9yA-unsplash.jpg" alt="Ролл">
-                        <div class="elements__texts">
-                            <h2 class="elements__text">Ролл</h2>
-                            <button type="button" class="elements__like"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="Креветки">
-                        <div class="elements__texts">
-                            <h2 class="elements__text">Креветки</h2>
-                            <button type="button" class="elements__like"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__image" src="images/ahtziri-lagarde-BM8-NSCj9yA-unsplash.jpg" alt="Ролл">
-                        <div class="elements__texts">
-                            <h2 class="elements__text">Ролл</h2>
-                            <button type="button" class="elements__like"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg"
-                            alt="Суши с лососем">
-                        <div class="elements__texts">
-                            <h2 class="elements__text">Суши с лососем</h2>
-                            <button type="button" class="elements__like"></button>
-                        </div>
-                    </li>
                 </ul>
+                <template class="element-template">
+                    <li class="elements__card">
+                    <img class="elements__image" src="" alt="">
+                    <div class="elements__texts">
+                        <h2 class="elements__text"></h2>
+                        <button type="button" class="elements__like"></button>
+                    </div>
+                </li>
+                </template>
             </section>
             <div class="popup">
                 <div class="popup__container">
-                <button type="button" class="popup__close"></button>
-                <form name="form" class="popup__form">
-                    <h2 class="popup__title">Редактировать профиль</h2>
-                    <input type="text" name="name" value="Жак-Ив Кусто" class="popup__text popup__text_type_title">
-                    <input type="text" name="info" value="Исследователь океана" class="popup__text popup__text_type_subtitle">
-                    <button type="submit" class="popup__submit">Сохранить</button>
-                </form>
-            </div>
+                    <button type="button" class="popup__close"></button>
+                    <form name="form" class="popup__form">
+                        <h2 class="popup__title">Редактировать профиль</h2>
+                        <input type="text" name="name" value="Жак-Ив Кусто" class="popup__text popup__text_type_title">
+                        <input type="text" name="info" value="Исследователь океана"
+                            class="popup__text popup__text_type_subtitle">
+                        <button type="submit" class="popup__submit">Сохранить</button>
+                    </form>
+                </div>
             </div>
         </main>
         <footer class="footer">
