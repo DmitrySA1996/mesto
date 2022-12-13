@@ -54,17 +54,16 @@ initialCards.forEach(function (element) {
   elementsСards.append(elementCard)
 });
 
-profileEditText.addEventListener('click', (event) => {
-  popup.classList.add('popup_opened');
-  nameInput.value = title.textContent;
-  infoInput.value = subtitle.textContent;
-});
+function editpopup(Edit, name, subname) {
+  Edit.addEventListener('click', (event) => {
+    popup.classList.add('popup_opened');
+    nameInput.value = name;
+    infoInput.value = subname;
+  })
+};
 
-profileAddButton.addEventListener('click', (event) => {
-  popup.classList.add('popup_opened');
-  nameInput.value = 'Название';
-  infoInput.value = 'Ссылка на картинку';
-});
+editpopup(profileEditText, title.textContent, subtitle.textContent);
+editpopup(profileAddButton, 'Название', 'Ссылка на картинку');
 
 function closePopup() {
   popup.classList.remove('popup_opened');
@@ -72,12 +71,16 @@ function closePopup() {
 
 closePopupButton.addEventListener('click', closePopup);
 
-function handleFormSubmit(event) {
-    event.preventDefault();
+function handleImageSubmit(event) {
+  event.preventDefault();
 
-    title.textContent = nameInput.value;
-    subtitle.textContent = infoInput.value;
-    popup.classList.remove('popup_opened');
-};
+  const elementCard = elementTemplate.cloneNode(true);
 
-popupForm.addEventListener('submit', handleFormSubmit);
+  elementCard.querySelector('.elements__image').src = infoInput.value;
+  elementCard.querySelector('.elements__image').alt = nameInput.value;
+  elementCard.querySelector('.elements__text').textContent = nameInput.value;
+
+  elementsСards.appendChild(elementCard)
+  popup.classList.remove('popup_opened');
+}
+popupForm.addEventListener('submit', handleImageSubmit);
