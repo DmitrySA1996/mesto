@@ -34,12 +34,13 @@
                 </ul>
                 <template class="element-template">
                     <li class="elements__card">
-                    <img class="elements__image popup__text_type_title" src="" alt="">
-                    <article class="elements__texts">
-                        <h2 class="elements__text popup__text_type_subtitle"></h2>
-                        <button type="button" class="elements__like"></button>
-                    </article>
-                </li>
+                        <button type="button" class="elements__delete"></button>
+                        <img class="elements__image popup__text_type_title" src="" alt="">
+                        <article class="elements__texts">
+                            <h2 class="elements__text popup__text_type_subtitle"></h2>
+                            <button type="button" class="elements__like"></button>
+                        </article>
+                    </li>
                 </template>
             </section>
             <div class="popup">
@@ -66,12 +67,20 @@
                     </form>
                 </div>
             </div>
-        </main>
-        <footer class="footer">
-            <p class="footer__copyright">© 2020 Mesto Russia</p>
-        </footer>
+            <div class="popup-card">
+                <div class="popup__container">
+                    <button type="button" class="popup__close"></button>
+                    <img class="popup-card__image" src="" alt="">
+                </div>
+            </div>
+    </div>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 
 </html>
