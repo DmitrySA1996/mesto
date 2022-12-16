@@ -3,9 +3,10 @@
     height: 19px;
     align-self: center;
     cursor: pointer;
-    background-image: url('../../../images/like.svg');
-    background-size: cover;
+    background-image: url(../../../images/like.svg);
+    background-size: contain;
     border: none;
+    background-repeat: no-repeat;
     user-select: none;
     background-color: rgba(0, 0, 0, 0);
     opacity: 1;
