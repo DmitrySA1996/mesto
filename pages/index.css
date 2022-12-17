@@ -25,9 +25,6 @@
 
 /* секция popup-----------------------------------------------------------------------------*/
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup-image/popup-image.css);
-@import url(../blocks/popup-card/popup-card.css);
-@import url(../blocks/popup-card__image/__image/popup-card__image.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close/popup__close.css);
@@ -55,3 +52,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 /* -----------------------------------------------------------------------------------------*/
+
+* {
+    outline: 1px solid red;
+}
