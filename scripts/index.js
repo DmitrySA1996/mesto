@@ -83,18 +83,23 @@ function editpopupImage(Edit, name, subname, pop, nameText, info) {
     nameText.value = name;
     info.value = subname;
 
-    const elementsCard = elementsСards.querySelector('.elements__card');
-    const elementsTexts = elementsCard.querySelector('.elements__texts');
-    const like = elementsTexts.querySelector('.elements__like');
-  
-    like.addEventListener('click', function (evt) {
-      evt.target.classList.toggle('elements__like_active');
-    });
-  
-    elementsCard.append(like);
+    like = elementsСards.querySelector('.elements__like');
+    addLike(like)
   });
-
+  
 };
+
+function addLike(button) {
+  button.addEventListener("click", () => {
+    button.classList.toggle("elements__like_active");
+  });
+};
+
+const likeButtons = Array.from(document.querySelectorAll('.elements__like'));
+
+  likeButtons.forEach((button) => {
+    addLike(button)
+  });
 
 editpopupImage(profileAddButton, "Название", "Ссылка на картинку", popupImage, nameImage, linkImage);
 
@@ -112,14 +117,6 @@ function handleImageSubmit(event) {
 };
 
 popupImage.addEventListener('submit', handleImageSubmit);
-
-const likeButtons = Array.from(document.querySelectorAll('.elements__like'));
-
-likeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    button.classList.toggle("elements__like_active");
-  });
-});
 
 const elementsCard = document.querySelectorAll('.elements__card');
 const card = elementsСards.querySelector('.elements__card');
