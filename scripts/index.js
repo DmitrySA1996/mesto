@@ -122,21 +122,27 @@ likeButtons.forEach((button) => {
 
 const popupCard = document.querySelector('.popup_type_card');
 const popupCardContainer = popupCard.querySelector('.popup__container');
+const card = elementsСards.querySelector('.elements__card');
 const elementsCard = document.querySelectorAll('.elements__card');
 const popupCardImg = popupCardContainer.querySelector('.popup__image');
+const elementsImage = card.querySelector('.elements__image');
 
-popupCardImg.addEventListener('click', (event) => {
+elementsImage.addEventListener('click', () => {
+
   popupCard.classList.add('.popup_opened');
 
-  popupCardImg.src = image.src;
-  popupCardImg.alt = image.alt;
+  popupCardImg.src = elementsImage.src;
+  popupCardImg.alt = elementsImage.alt;
 
 });
 
 popupCardContainer.querySelector('.popup__close').addEventListener('click', closePopup);
 
-elementsCard.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    document.querySelector('.elements__card').remove();
+elementsCard.forEach((card) => {
+
+  const button = card.querySelector('.elements__delete');
+
+  button.addEventListener("click", () => {
+    card.remove();
   });
 });
