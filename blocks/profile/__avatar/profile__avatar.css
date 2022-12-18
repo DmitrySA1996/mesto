@@ -1,0 +1,10 @@
+.profile__avatar {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 597px) {
+    .profile__avatar {
+        flex-direction: column;
+    }
+}
