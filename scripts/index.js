@@ -86,12 +86,14 @@ function editpopupImage(Edit, name, subname, pop, nameText, info) {
     const elementsCard = elementsСards.querySelector('.elements__card');
     const elementsTexts = elementsCard.querySelector('.elements__texts');
     const like = elementsTexts.querySelector('.elements__like');
-    
+  
     like.addEventListener('click', function (evt) {
       evt.target.classList.toggle('elements__like_active');
-    }); 
-
+    });
+  
+    elementsCard.append(like);
   });
+
 };
 
 editpopupImage(profileAddButton, "Название", "Ссылка на картинку", popupImage, nameImage, linkImage);
