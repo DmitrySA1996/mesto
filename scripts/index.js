@@ -56,7 +56,7 @@ function copyTemplate(template) {
   return template.cloneNode(true);
 };
 
-function createCard(name, link, element) {
+function createCard(name, link) {
   elementCard = copyTemplate(elementTemplate);
 
   elementCard.querySelector('.elements__image').src = link;
@@ -68,8 +68,7 @@ function createCard(name, link, element) {
 
   elementsСards.append(elementCard);
 
-  console.log(element);
-  const button = element.querySelector('.elements__delete');
+  const button = elementsСards.querySelector('.elements__delete');
 
   button.addEventListener("click", () => {
     elementsСards.remove();
@@ -88,7 +87,7 @@ function addLike(like) {
 };
 
 initialCards.forEach(function (element) {
-  createCard(element.name, element.link, element);
+  createCard(element.name, element.link);
 });
 
 profileEditText.addEventListener('click', (event) => {
