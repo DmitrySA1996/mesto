@@ -14,4 +14,10 @@
     background-color: rgba(0, 0, 0, 0);
     background-repeat: no-repeat;
     background-position: center;
+    opacity: 1;
+}
+
+.elements__delete:hover {
+    opacity: 0.6;
+    transition-duration: 3s;
 }
