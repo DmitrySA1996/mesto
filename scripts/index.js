@@ -14,13 +14,13 @@ const infoInput = document.querySelector('.popup__text_type_subtitle');
 const elementsContainer = document.querySelector('.elements__cards');
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.elements__card');
 
-const popupImage = document.querySelector('.popup_type_image');
+const popupImage = document.querySelector('.popup__type_image');
 const containerImage = popupImage.querySelector('.popup__container');
 const formImage = containerImage.querySelector('.popup__form');
 const nameImage = formImage.querySelector('.popup__text_type_title');
 const linkImage = formImage.querySelector('.popup__text_type_subtitle');
 
-const popupCard = document.querySelector('.popup_type_card');
+const popupCard = document.querySelector('.popup__type_card');
 const cardContainer = popupCard.querySelector('.popup__container');
 const cardImg = cardContainer.querySelector('.popup__image');
 const cardSign = cardContainer.querySelector('.popup__sign');
