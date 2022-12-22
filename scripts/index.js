@@ -79,12 +79,6 @@ function createCard(name, link) {
     evt.target.closest('.elements__card').remove()
   });
 
-  return elementCard;
-};
-
-function renderCard(name, link) {
-  elementCard = createCard(name, link);
-
   const elementsImage = elementCard.querySelector('.elements__image');
   const elementsText = elementCard.querySelector('.elements__text');
 
@@ -100,10 +94,10 @@ function renderCard(name, link) {
 
   return elementCard;
 
-}
+};
 
 initialCards.forEach(function (element) {
-  elementCard = renderCard(element.name, element.link);
+  elementCard = createCard(element.name, element.link);
   elementsContainer.append(elementCard);
 });
 
@@ -129,9 +123,9 @@ profileAddButton.addEventListener('click', (event) => {
 
 function handleImageSubmit(event) {
   event.preventDefault();
-  elementCard = renderCard(nameImage.value, linkImage.value);
+  elementCard = createCard(nameImage.value, linkImage.value);
   elementsContainer.prepend(elementCard);
-  popupImage.classList.remove('popup_opened');
+  closePopup(popupImage);
   formImage.reset();
 };
 
