@@ -1,5 +1,5 @@
 # Проект: Место
-![Снимок4](https://user-images.githubusercontent.com/114693652/204156834-166e32ef-2785-4b53-bbe4-09388d90ffd3.PNG)
+![Безымянный](https://user-images.githubusercontent.com/114693652/209224670-dc6a243c-a202-4b03-be4c-9c924ef1a715.png)
 
 
 *© Сенченко Д.А.*
