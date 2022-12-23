@@ -25,6 +25,8 @@ const cardContainer = popupCard.querySelector('.popup__container');
 const cardImg = cardContainer.querySelector('.popup__image');
 const cardSign = cardContainer.querySelector('.popup__sign');
 
+const buttonCloseList = document.querySelectorAll('.popup__close');
+
 const initialCards = [
   {
     name: 'Фо-Бо',
@@ -63,9 +65,12 @@ function toggleLike(button) {
 function createCard(name, link) {
   elementCard = elementTemplate.cloneNode(true);
 
-  elementCard.querySelector('.elements__image').src = link;
-  elementCard.querySelector('.elements__image').alt = name;
-  elementCard.querySelector('.elements__text').textContent = name;
+  const elementsImage = elementCard.querySelector('.elements__image');
+  const elementsText = elementCard.querySelector('.elements__text');
+
+  elementsImage.src = link;
+  elementsImage.alt = name;
+  elementsText.textContent = name;
 
   const like = elementCard.querySelector('.elements__like');
   like.addEventListener('click', () => {
@@ -79,14 +84,11 @@ function createCard(name, link) {
     evt.target.closest('.elements__card').remove()
   });
 
-  const elementsImage = elementCard.querySelector('.elements__image');
-  const elementsText = elementCard.querySelector('.elements__text');
-
   elementsImage.addEventListener('click', () => {
 
     openPopup(popupCard);
 
-    cardImg.src = elementsImage.src;
+    cardImg.src = link;
     cardImg.alt = elementsImage.alt;
     cardSign.textContent = elementsText.textContent;
 
@@ -135,20 +137,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
 
-popupCard.querySelector('.popup__close').addEventListener('click', () => {
-
-  closePopup(popupCard);
-
-});
-
-popupImage.querySelector('.popup__close').addEventListener('click', () => {
-
-  closePopup(popupImage);
-
-});
-
-popupProfile.querySelector('.popup__close').addEventListener('click', () => {
-
-  closePopup(popupProfile);
-
-});
+buttonCloseList.forEach(btn => {
+  const popup = btn.closest('.popup');
+  btn.addEventListener('click', () => closePopup(popup));
+  })
