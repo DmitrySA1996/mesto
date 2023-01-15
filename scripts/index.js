@@ -56,6 +56,7 @@ const initialCards = [
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  enableValidation();
 };
 
 function toggleLike(button) {
@@ -134,12 +135,20 @@ function handleImageSubmit(event) {
 formImage.addEventListener('submit', handleImageSubmit);
 
 function closePopup(popup) {
+  const container = popup.querySelector('.popup__container');
+  const formElement = container.querySelector('.popup__form');
+  const inputList = Array.from(formElement.querySelectorAll('.popup__text'));;
+
+  inputList.forEach((inputElement) => {
+    console.log(inputElement);
+    hideInputError(formElement, inputElement);
+  });
+
+
+
+  enableValidation();
+
   popup.classList.remove('popup_opened');
-  inputElement = popup.querySelector('.popup__text');
-  console.log(inputElement);
-  const errorElement = popup.querySelector(`.${inputElement.id}-error`);
-  console.log(errorElement);
-  errorElement.textContent = "";
 };
 
 buttonCloseList.forEach(btn => {
@@ -159,7 +168,6 @@ buttonCloseList.forEach(btn => {
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  console.log(errorElement);
   errorElement.classList.add('popup__text-error');
   errorElement.textContent = errorMessage;
   errorElement.classList.add('popup__text-error_active');
@@ -210,8 +218,6 @@ const enableValidation = () => {
   });
 
 };
-
-enableValidation();
 
 function hasInvalidInput(inputList, inputElement) {
   return inputList.some((inputElement) => {
