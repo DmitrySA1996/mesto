@@ -159,6 +159,7 @@ buttonCloseList.forEach(btn => {
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  console.log(errorElement);
   errorElement.classList.add('popup__text-error');
   errorElement.textContent = errorMessage;
   errorElement.classList.add('popup__text-error_active');
