@@ -43,15 +43,27 @@
                     </li>
                 </template>
             </section>
-            <div class="popup">
+            <div class="popup popup_type_card">
                 <div class="popup__container">
-                    <button type="button" class="popup__close"></button>
-                    <form name="form" class="popup__form">
-                        <h2 class="popup__title">Редактировать профиль</h2>
-                        <input type="text" name="name" value="" placeholder="Имя" class="popup__text popup__text_type_title">
-                        <input type="text" name="info" value="" placeholder="О себе"
-                            class="popup__text popup__text_type_subtitle">
-                        <button type="submit" class="popup__submit">Сохранить</button>
+                    <button type="button" class="popup__close popup__close_type_card-add"></button>
+                    <form name="popup__form" novalidate class="popup__form popup__form_type_card-add">
+                        <fieldset class="popup__set">
+                            <h2 class="popup__title">Редактировать профиль</h2>
+
+                            <label class="popup__field">
+                                <input type="text" name="name" value="" placeholder="Имя" id="title" class="popup__text 
+                        popup__text_type_title" minlength="2" maxlength="30" required>
+                                <span class="title-error popup__text-error"></span>
+                            </label>
+
+                            <label class="popup__field">
+                                <input type="text" name="info" value="" placeholder="О себе" id="subtitle"
+                                    class="popup__text popup__text_type_subtitle" minlength="2" maxlength="30" required>
+                                <span class="subtitle-error"></span>
+                            </label>
+
+                            <button type="submit" class="popup__submit">Сохранить</button>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -59,11 +71,23 @@
                 <div class="popup__container">
                     <button type="button" class="popup__close"></button>
                     <form name="form" class="popup__form">
-                        <h2 class="popup__title">Новое место</h2>
-                        <input type="text" name="name" value="" placeholder="Название" class="popup__text popup__text_type_title">
-                        <input type="text" name="info" value="" placeholder="Ссылка на картинку"
-                            class="popup__text popup__text_type_subtitle">
-                        <button type="submit" class="popup__submit">Создать</button>
+                        <fieldset class="popup__set">
+                            <h2 class="popup__title">Новое место</h2>
+
+                            <label class="popup__field">
+                                <input type="text" name="name" value="" placeholder="Название" id="title"
+                                    class="popup__text popup__text_type_title" minlength="2" maxlength="30" required>
+                                    <span class="title-error"></span>
+                            </label>
+
+                            <label class="popup__field">
+                                <input type="url" name="link" value="" id="link" placeholder="Ссылка на картинку"
+                                    class="popup__text popup__text_type_subtitle" required>
+                                    <span class="link-error"></span>
+                            </label>
+
+                            <button type="submit" class="popup__submit">Создать</button>
+                        </fieldset>
                     </form>
                 </div>
             </div>
