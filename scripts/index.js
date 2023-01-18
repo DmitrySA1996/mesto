@@ -55,8 +55,15 @@ const initialCards = [
 ];
 
 function openPopup(popup) {
+  document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    evt.preventDefault();
+  }
+  if (evt.key === 'Escape') {
+    closePopup(popup);
+  }
+});
   popup.classList.add('popup_opened');
-  enableValidation();
 };
 
 function toggleLike(button) {
@@ -86,7 +93,14 @@ function createCard(name, link) {
   });
 
   elementsImage.addEventListener('click', () => {
-
+    enableValidation({
+      formSelector: '.popup__form',
+      inputSelector: '.popup__text',
+      submitButtonSelector: '.popup__submit',
+      inactiveButtonClass: 'popup__submit_inactive',
+      inputErrorClass: 'popup__text-error',
+      errorClass: 'popup__text-error_active'
+    });
     openPopup(popupCard);
     cardImg.src = link;
     cardImg.alt = elementsImage.alt;
@@ -104,6 +118,14 @@ initialCards.forEach(function (element) {
 });
 
 profileEditText.addEventListener('click', (event) => {
+  enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__text-error',
+  errorClass: 'popup__text-error_active'
+});
   openPopup(popupProfile);
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
@@ -115,12 +137,19 @@ function handleFormSubmit(event) {
   title.textContent = nameInput.value;
   subtitle.textContent = infoInput.value;
   closePopup(popupProfile);
-  hideError(popup);
 };
 
 formProfile.addEventListener('submit', handleFormSubmit);
 
 profileAddButton.addEventListener('click', (event) => {
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__text',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_inactive',
+    inputErrorClass: 'popup__text-error',
+    errorClass: 'popup__text-error_active'
+  });
   openPopup(popupImage);
 });
 
@@ -134,36 +163,16 @@ function handleImageSubmit(event) {
 
 formImage.addEventListener('submit', handleImageSubmit);
 
-function hideError(popup) {
-  const container = popup.querySelector('.popup__container');
-  const formElement = container.querySelector('.popup__form');
-  const inputList = Array.from(formElement.querySelectorAll('.popup__text'));
-  inputList.forEach((inputElement) => {
-    console.log(inputElement);
-    hideInputError(formElement, inputElement);
-  });
-};
-
-function closePopup(popup) {  
-
-  enableValidation();
-
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
 
 buttonCloseList.forEach(btn => {
   const popup = btn.closest('.popup');
   btn.addEventListener('click', () => closePopup(popup));
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-      hideError(popup);
-    }
-  });
   popup.addEventListener('click', function (evt) {
     if (evt.target === evt.currentTarget) {
       closePopup(popup);
-      hideError(popup);
     }
   });
 });
