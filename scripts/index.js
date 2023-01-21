@@ -93,14 +93,7 @@ function createCard(name, link) {
   });
 
   elementsImage.addEventListener('click', () => {
-    enableValidation({
-      formSelector: '.popup__form',
-      inputSelector: '.popup__text',
-      submitButtonSelector: '.popup__submit',
-      inactiveButtonClass: 'popup__submit_inactive',
-      inputErrorClass: 'popup__text-error',
-      errorClass: 'popup__text-error_active'
-    });
+    
     openPopup(popupCard);
     cardImg.src = link;
     cardImg.alt = elementsImage.alt;
@@ -118,14 +111,6 @@ initialCards.forEach(function (element) {
 });
 
 profileEditText.addEventListener('click', (event) => {
-  enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__text',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__text-error',
-  errorClass: 'popup__text-error_active'
-});
   openPopup(popupProfile);
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
@@ -142,14 +127,6 @@ function handleFormSubmit(event) {
 formProfile.addEventListener('submit', handleFormSubmit);
 
 profileAddButton.addEventListener('click', (event) => {
-  enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__text',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__submit_inactive',
-    inputErrorClass: 'popup__text-error',
-    errorClass: 'popup__text-error_active'
-  });
   openPopup(popupImage);
 });
 
@@ -175,4 +152,13 @@ buttonCloseList.forEach(btn => {
       closePopup(popup);
     }
   });
+});
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__text-error',
+  errorClass: 'popup__text-error_active'
 });
