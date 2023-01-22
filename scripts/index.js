@@ -56,13 +56,13 @@ const initialCards = [
 
 function openPopup(popup) {
   document.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Enter') {
-    evt.preventDefault();
-  }
-  if (evt.key === 'Escape') {
-    closePopup(popup);
-  }
-});
+    if (evt.key === 'Enter') {
+      evt.preventDefault();
+    }
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
   popup.classList.add('popup_opened');
 };
 
@@ -89,11 +89,11 @@ function createCard(name, link) {
 
   const button = elementCard.querySelector('.elements__delete')
   button.addEventListener('click', (evt) => {
-    evt.target.closest('.elements__card').remove()
+    evt.target.closest('.elements__card').remove();
   });
 
   elementsImage.addEventListener('click', () => {
-    
+
     openPopup(popupCard);
     cardImg.src = link;
     cardImg.alt = elementsImage.alt;
@@ -142,6 +142,12 @@ formImage.addEventListener('submit', handleImageSubmit);
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+
+  document.removeEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      evt.preventDefault();
+    }
+  });
 };
 
 buttonCloseList.forEach(btn => {
@@ -159,6 +165,6 @@ enableValidation({
   inputSelector: '.popup__text',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__text-error',
+  inputErrorClass: 'popup__input-error',
   errorClass: 'popup__text-error_active'
 });

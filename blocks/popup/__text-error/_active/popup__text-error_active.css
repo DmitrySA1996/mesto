@@ -1,4 +1,4 @@
 .popup__text-error_active {
-  margin-bottom: 8px;
-    opacity: 1;
-  }
+  opacity: 1;
+  min-height: 38px;
+}
