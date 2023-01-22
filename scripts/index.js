@@ -122,6 +122,7 @@ function handleFormSubmit(event) {
   title.textContent = nameInput.value;
   subtitle.textContent = infoInput.value;
   closePopup(popupProfile);
+  formProfile.reset();
 };
 
 formProfile.addEventListener('submit', handleFormSubmit);
@@ -135,7 +136,7 @@ function handleImageSubmit(event) {
   elementCard = createCard(nameImage.value, linkImage.value);
   elementsContainer.prepend(elementCard);
   closePopup(popupCard);
-  formImage.reset();
+  formImage.reset()
 };
 
 formImage.addEventListener('submit', handleImageSubmit);
@@ -164,7 +165,7 @@ enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__text',
   submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input-error',
-  errorClass: 'popup__text-error_active'
+  inactiveButtonClass: '.popup__submit_inactive',
+  inputErrorClass: '.popup__input-error',
+  errorClass: '.popup__text-error_active'
 });
