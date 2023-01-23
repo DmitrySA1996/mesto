@@ -21,6 +21,28 @@ const checkInputValidity = (inputElement, formElement, settings) => {
   }
 };
 
+function hideError(popup) {
+
+  settings = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__text',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_inactive',
+    inputErrorClass: '.popup__input-error',
+    errorClass: '.popup__text-error_active'
+  }
+
+  const container = popup.querySelector('.popup__container');
+  const formElement = container.querySelector(settings.formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+  enableValidation(settings);
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, settings);
+  });
+};
+
+
 const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);

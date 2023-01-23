@@ -55,10 +55,8 @@ const initialCards = [
 ];
 
 function openPopup(popup) {
+
   document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Enter') {
-      evt.preventDefault();
-    }
     if (evt.key === 'Escape') {
       closePopup(popup);
     }
@@ -111,6 +109,8 @@ initialCards.forEach(function (element) {
 });
 
 profileEditText.addEventListener('click', (event) => {
+  
+  hideError(popupProfile);
   openPopup(popupProfile);
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
@@ -129,6 +129,7 @@ formProfile.addEventListener('submit', handleFormSubmit);
 
 profileAddButton.addEventListener('click', (event) => {
   openPopup(popupImage);
+  hideError(popupImage);
 });
 
 function handleImageSubmit(event) {
@@ -145,6 +146,9 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 
   document.removeEventListener('keydown', function (evt) {
+    if (evt.key === 'Enter') {
+      evt.preventDefault();
+    }
     if (evt.key === 'Escape') {
       evt.preventDefault();
     }
