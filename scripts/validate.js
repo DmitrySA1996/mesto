@@ -1,3 +1,11 @@
+const settings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__text-error_active'
+};
 
 const showInputError = (inputElement, formElement, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -20,28 +28,17 @@ const checkInputValidity = (inputElement, formElement, settings) => {
     hideInputError(formElement, inputElement, settings);
   }
 };
+function hideError(formElement) {
 
-function hideError(popup) {
-
-  settings = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__text',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__submit_inactive',
-    inputErrorClass: '.popup__input-error',
-    errorClass: 'popup__text-error_active'
-  }
-
-  const container = popup.querySelector('.popup__container');
-  const formElement = container.querySelector(settings.formSelector);
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
-  enableValidation(settings);
+
+  toggleButtonState(inputList, buttonElement, settings);
   inputList.forEach((inputElement) => {
     hideInputError(formElement, inputElement, settings);
   });
-};
 
+};
 
 const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
@@ -59,7 +56,7 @@ const setEventListeners = (formElement, settings) => {
   });
 };
 
-const enableValidation = (settings) => {
+const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {
 
@@ -71,7 +68,7 @@ const enableValidation = (settings) => {
 
 function hasInvalidInput(inputList, inputElement) {
   return inputList.some((inputElement) => {
-    !inputElement.validity.valid;
+    return !inputElement.validity.valid;
   });
 };
 
