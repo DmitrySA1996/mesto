@@ -56,12 +56,12 @@ const initialCards = [
 
 function openPopup(popup) {
 
+  popup.classList.add('popup_opened');
   document.addEventListener('keydown', function (evt) {
     if (evt.key === 'Escape') {
       closePopup(popup);
     }
   });
-  popup.classList.add('popup_opened');
 };
 
 function toggleLike(button) {
@@ -93,7 +93,7 @@ function createCard(name, link) {
   elementsImage.addEventListener('click', () => {
 
     openPopup(popupCard);
-    cardImg.src = link;
+    cardImg.src = elementsImage.src;
     cardImg.alt = elementsImage.alt;
     cardSign.textContent = elementsText.textContent;
 
@@ -111,18 +111,21 @@ initialCards.forEach(function (element) {
 profileEditText.addEventListener('click', (event) => {  
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
-  hideError(popupProfile);
   openPopup(popupProfile);
+  hideError(popupProfile);
 });
+
 
 function handleFormSubmit(event) {
   event.preventDefault();
 
   title.textContent = nameInput.value;
   subtitle.textContent = infoInput.value;
-  closePopup(popupProfile);
   formProfile.reset();
+  closePopup(popupProfile);
 };
+
+formProfile.addEventListener('submit', handleFormSubmit);
 
 profileAddButton.addEventListener('click', (event) => { 
   formImage.reset();
@@ -134,8 +137,8 @@ function handleImageSubmit(event) {
   event.preventDefault();
   elementCard = createCard(nameImage.value, linkImage.value);
   elementsContainer.prepend(elementCard);
-  closePopup(popupCard);
-  formImage.reset()
+  closePopup(popupImage);
+  formImage.reset();
 };
 
 formImage.addEventListener('submit', handleImageSubmit);
@@ -144,10 +147,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 
   document.removeEventListener('keydown', function (evt) {
-    if (evt.key === 'Enter') {
-      evt.preventDefault();
-      popup.classList.remove('popup_opened');
-    }
     if (evt.key === 'Escape') {
       evt.preventDefault();
     }
