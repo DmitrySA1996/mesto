@@ -3,10 +3,5 @@
     margin-right: auto;
     max-width: 75vw;
     max-height: 75vh;
-}
-
-@media screen and (max-width: 597px) {
-    .popup__image {
-        width: 100%;
-    }
+    width: 100%;
 }

@@ -1,12 +1,3 @@
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__text',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: '.popup__input-error',
-  errorClass: 'popup__text-error_active'
-};
-
 const showInputError = (inputElement, formElement, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   errorElement.classList.add(settings.errorClass);
@@ -28,7 +19,7 @@ const checkInputValidity = (inputElement, formElement, settings) => {
     hideInputError(formElement, inputElement, settings);
   }
 };
-function hideError(formElement) {
+function hideError(formElement,settings) {
 
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);

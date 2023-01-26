@@ -1,6 +1,6 @@
 .popup__text-error {
   display: block;
-  min-height: 38px;
+  min-height: 30px;
   font-size: 12px;
   color: red;
   opacity: 1;

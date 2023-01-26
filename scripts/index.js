@@ -54,14 +54,26 @@ const initialCards = [
   }
 ];
 
+const settings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__text-error_active'
+};
+
+function handleEscape(event) {
+  const openPopup = document.querySelector('.popup_opened');
+  if (event.key === 'Escape') {
+    closePopup(openPopup);
+  }
+};
+
 function openPopup(popup) {
+  document.addEventListener('keydown', handleEscape);
 
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
 };
 
 function toggleLike(button) {
@@ -108,11 +120,11 @@ initialCards.forEach(function (element) {
   elementsContainer.append(elementCard);
 });
 
-profileEditText.addEventListener('click', (event) => {  
+profileEditText.addEventListener('click', (event) => {
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
   openPopup(popupProfile);
-  hideError(popupProfile);
+  hideError(popupProfile, settings);
 });
 
 
@@ -127,9 +139,9 @@ function handleFormSubmit(event) {
 
 formProfile.addEventListener('submit', handleFormSubmit);
 
-profileAddButton.addEventListener('click', (event) => { 
+profileAddButton.addEventListener('click', (event) => {
   formImage.reset();
-  hideError(popupImage);
+  hideError(popupImage, settings);
   openPopup(popupImage);
 });
 
@@ -144,13 +156,8 @@ function handleImageSubmit(event) {
 formImage.addEventListener('submit', handleImageSubmit);
 
 function closePopup(popup) {
+  document.removeEventListener('keydown', handleEscape);
   popup.classList.remove('popup_opened');
-
-  document.removeEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      evt.preventDefault();
-    }
-  });
 };
 
 buttonCloseList.forEach(btn => {
@@ -163,4 +170,4 @@ buttonCloseList.forEach(btn => {
   });
 });
 
-enableValidation();
+enableValidation(settings);
