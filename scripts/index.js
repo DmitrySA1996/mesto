@@ -64,8 +64,8 @@ const settings = {
 };
 
 function handleEscape(event) {
-  const openPopup = document.querySelector('.popup_opened');
   if (event.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened');
     closePopup(openPopup);
   }
 };
