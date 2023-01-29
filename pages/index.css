@@ -34,11 +34,11 @@
 @import url(../blocks/popup/__submit/popup__submit.css);
 @import url(../blocks/popup/__submit/_inactive/popup__submit_inactive.css);
 @import url(../blocks/popup/__text/popup__text.css);
+@import url(../blocks/popup/__text-error/popup__text-error.css);
+@import url(../blocks/popup/__text-error/_active/popup__text-error_active.css);
 @import url(../blocks//popup/__sign/popup__sign.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/_type/popup_type_card.css);
-@import url(../blocks/popup/__text-error/popup__text-error.css);
-@import url(../blocks/popup/__text-error/_active/popup__text-error_active.css);
 /* ------------------------------------------------------------------------------------------*/
 
 
