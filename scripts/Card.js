@@ -30,8 +30,8 @@ export default class Card {
         this._elementsText.textContent = this._name;
     };
 
-    _like = () => {
-        toggleLike(this._like);
+    _like = () => {        
+        this._button.classList.toggle("elements__like_active");
     }
 
     _button = () => {

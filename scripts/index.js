@@ -96,10 +96,6 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
 
-function toggleLike(button) {
-  button.classList.toggle("elements__like_active");
-};
-
 profileEditText.addEventListener('click', (event) => {
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
