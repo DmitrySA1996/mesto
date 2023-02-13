@@ -1,3 +1,5 @@
+import Card from "../scripts/Card.js";
+
 const popupProfile = document.querySelector('.popup');
 const containerProfile = popupProfile.querySelector('.popup__container');
 const formProfile = containerProfile.querySelector('.popup__form');
@@ -63,6 +65,24 @@ const settings = {
   errorClass: 'popup__text-error_active'
 };
 
+function createCard(item) {
+  const card = new Card(item, elementTemplate);
+  const elementCard = card.createCard();
+
+  return elementCard;
+}
+
+initialCards.forEach((item) => {
+  createCard(item);
+});
+
+const handleSubmitFormAddCard = (evt) => {
+  evt.preventDefault();
+  createCard();
+  
+  closePopup(popupCard);
+}
+
 function handleEscape(event) {
   if (event.key === 'Escape') {
     const openPopup = document.querySelector('.popup_opened');
@@ -80,53 +100,12 @@ function toggleLike(button) {
   button.classList.toggle("elements__like_active");
 };
 
-function createCard(name, link) {
-  elementCard = elementTemplate.cloneNode(true);
-
-  const elementsImage = elementCard.querySelector('.elements__image');
-  const elementsText = elementCard.querySelector('.elements__text');
-
-  elementsImage.src = link;
-  elementsImage.alt = name;
-  elementsText.textContent = name;
-
-  const like = elementCard.querySelector('.elements__like');
-  like.addEventListener('click', () => {
-
-    toggleLike(like);
-
-  });
-
-  const button = elementCard.querySelector('.elements__delete')
-  button.addEventListener('click', (evt) => {
-    evt.target.closest('.elements__card').remove();
-  });
-
-  elementsImage.addEventListener('click', () => {
-
-    openPopup(popupCard);
-    cardImg.src = elementsImage.src;
-    cardImg.alt = elementsImage.alt;
-    cardSign.textContent = elementsText.textContent;
-
-  });
-
-  return elementCard;
-
-};
-
-initialCards.forEach(function (element) {
-  elementCard = createCard(element.name, element.link);
-  elementsContainer.append(elementCard);
-});
-
 profileEditText.addEventListener('click', (event) => {
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
   openPopup(popupProfile);
   hideError(popupProfile, settings);
 });
-
 
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -170,4 +149,4 @@ buttonCloseList.forEach(btn => {
   });
 });
 
-enableValidation(settings);
+/*enableValidation(settings);*/
