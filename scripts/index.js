@@ -65,23 +65,26 @@ const settings = {
   errorClass: 'popup__text-error_active'
 };
 
-function createCard(item) {
-  const card = new Card(item, elementTemplate);
+function createCard(element) {
+  const card = new Card(element, elementTemplate, popupCard, cardImg, cardSign);
   const elementCard = card.createCard();
 
   return elementCard;
 }
 
-initialCards.forEach((item) => {
-  createCard(item);
+initialCards.forEach((element) => {
+  const elementCard = createCard(element);
+  openPopup(elementCard);
+  elementsContainer.append(elementCard);
 });
 
-const handleSubmitFormAddCard = (evt) => {
-  evt.preventDefault();
-  createCard();
-  
-  closePopup(popupCard);
-}
+const handleImageSubmit = (element) => {
+  element.preventDefault();
+  elementCard = createCard(element);
+  elementsContainer.prepend(elementCard);
+  closePopup(popupImage);
+  formImage.reset();
+};
 
 function handleEscape(event) {
   if (event.key === 'Escape') {
@@ -119,14 +122,6 @@ profileAddButton.addEventListener('click', (event) => {
   hideError(popupImage, settings);
   openPopup(popupImage);
 });
-
-function handleImageSubmit(event) {
-  event.preventDefault();
-  elementCard = createCard(nameImage.value, linkImage.value);
-  elementsContainer.prepend(elementCard);
-  closePopup(popupImage);
-  formImage.reset();
-};
 
 formImage.addEventListener('submit', handleImageSubmit);
 

@@ -21,7 +21,6 @@ export default class Card {
         this._setEventHandlers();
 
         return this.elementCard;
-
     };
 
     _nameCard = () => {
@@ -43,12 +42,11 @@ export default class Card {
         this._button.addEventListener("click", () => this._button())
         this._like.addEventListener("click", () => this._like())
         this._elementsImage.addEventListener("click", () =>
-            this._handleCardClick(this._name, this._link)
+            this._handleCardClick()
         )
     }
 
-    _handleCardClick(_name, _link) {
-        openPopup(this.popupCard);
+    _handleCardClick() {
         this.cardImg.src = this._elementsImage.src;
         this.cardImg.alt = this._elementsImage.alt;
         this.cardSign.textContent = this._elementsText.textContent;
