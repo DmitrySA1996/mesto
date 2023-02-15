@@ -1,4 +1,5 @@
 import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
 
 const popupProfile = document.querySelector('.popup');
 const containerProfile = popupProfile.querySelector('.popup__container');
@@ -140,4 +141,4 @@ buttonCloseList.forEach(btn => {
   });
 });
 
-/*enableValidation(settings);*/
+enableValidation(settings);
