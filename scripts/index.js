@@ -66,6 +66,8 @@ const settings = {
   errorClass: 'popup__text-error_active'
 };
 
+const ValidationForm = new FormValidator(settings);
+
 function createCard(element) {
   const card = new Card(element, elementTemplate, popupCard, cardImg, cardSign);
   const elementCard = card.createCard();
@@ -81,7 +83,7 @@ initialCards.forEach((element) => {
 
 const handleImageSubmit = (element) => {
   element.preventDefault();
-  elementCard = createCard(element);
+  elementCard = createCard(formImage);
   elementsContainer.prepend(elementCard);
   closePopup(popupImage);
   formImage.reset();
@@ -104,7 +106,7 @@ profileEditText.addEventListener('click', (event) => {
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
   openPopup(popupProfile);
-  hideError(popupProfile, settings);
+  ValidationForm.hideError();
 });
 
 function handleFormSubmit(event) {
@@ -120,7 +122,7 @@ formProfile.addEventListener('submit', handleFormSubmit);
 
 profileAddButton.addEventListener('click', (event) => {
   formImage.reset();
-  hideError(popupImage, settings);
+  ValidationForm.hideError();
   openPopup(popupImage);
 });
 
@@ -141,4 +143,4 @@ buttonCloseList.forEach(btn => {
   });
 });
 
-enableValidation(settings);
+ValidationForm.enableValidation();
