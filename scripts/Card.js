@@ -29,18 +29,18 @@ export default class Card {
         this._elementsText.textContent = this._name;
     };
 
-    _like = () => {        
-        this._button.classList.toggle("elements__like_active");
+    _toggleLike = () => {        
+        this._like.classList.toggle("elements__like_active");
     }
 
-    _button = () => {
-        this._cardElement.remove()
+    _deleteCard= () => {
+        this.elementCard.remove()
     }
 
 
     _setEventHandlers = () => {
-        this._button.addEventListener("click", () => this._button())
-        this._like.addEventListener("click", () => this._like())
+        this._button.addEventListener("click", () => this._deleteCard())
+        this._like.addEventListener("click", () => this._toggleLike())
         this._elementsImage.addEventListener("click", () =>
             this._handleCardClick()
         )
