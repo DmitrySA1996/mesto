@@ -1,13 +1,11 @@
 export default class Card {
-    constructor(element, elementTemplate, popupCard, cardImg, cardSign) {
+    constructor(element, elementTemplate, handleCardClick) {
         this._name = element.name;
         this._link = element.link;
         this.elementTemplate = elementTemplate;
-        this.popupCard = popupCard;
-        this.cardImg = cardImg;
-        this.cardSign = cardSign;
+        this.handleCardClick = handleCardClick;
     }
-    
+
 
     createCard() {
         this.elementCard = this.elementTemplate.cloneNode(true);
@@ -29,11 +27,11 @@ export default class Card {
         this._elementsText.textContent = this._name;
     };
 
-    _toggleLike = () => {        
+    _toggleLike = () => {
         this._like.classList.toggle("elements__like_active");
     }
 
-    _deleteCard= () => {
+    _deleteCard = () => {
         this.elementCard.remove()
     }
 
@@ -42,14 +40,8 @@ export default class Card {
         this._button.addEventListener("click", () => this._deleteCard())
         this._like.addEventListener("click", () => this._toggleLike())
         this._elementsImage.addEventListener("click", () =>
-            this._handleCardClick()
+            this.handleCardClick(this._elementsImage, this._elementsText)
         )
-    }
-
-    _handleCardClick() {
-        this.cardImg.src = this._elementsImage.src;
-        this.cardImg.alt = this._elementsImage.alt;
-        this.cardSign.textContent = this._elementsText.textContent;
     }
 
 }

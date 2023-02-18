@@ -20,6 +20,8 @@ const elementTemplate = document.querySelector('.element-template').content.quer
 const popupImage = document.querySelector('.popup_type_image');
 const containerImage = popupImage.querySelector('.popup__container');
 const formImage = containerImage.querySelector('.popup__form');
+const nameImage = formImage.querySelector('.popup__text_type_title');
+const linkImage = formImage.querySelector('.popup__text_type_subtitle');
 
 const popupCard = document.querySelector('.popup_type_card');
 const cardContainer = popupCard.querySelector('.popup__container');
@@ -27,6 +29,10 @@ const cardImg = cardContainer.querySelector('.popup__image');
 const cardSign = cardContainer.querySelector('.popup__sign');
 
 const buttonCloseList = document.querySelectorAll('.popup__close');
+
+const src = ""; 
+const alt = ""; 
+const textContent = "";
 
 const initialCards = [
   {
@@ -66,9 +72,18 @@ const settings = {
 
 const ValidationForm = new FormValidator(settings);
 
+const handleCardClick = (elementsImage, elementsText) => {
+  cardImg.src = elementsImage.src;
+  cardImg.alt = elementsImage.alt;
+  cardSign.textContent = elementsText.textContent;
+
+  openPopup(popupCard);
+}
+
 function createCard(element) {
-  const card = new Card(element, elementTemplate, popupCard, cardImg, cardSign);
+  const card = new Card(element, elementTemplate, handleCardClick);
   const elementCard = card.createCard();
+  
 
   return elementCard;
 }
@@ -80,8 +95,12 @@ initialCards.forEach((element) => {
 
 const handleImageSubmit = (element) => {
   element.preventDefault();
-  elementCard = createCard(formImage);
-  elementsContainer.prepend(elementCard);
+  const inputImage = {
+    name: nameImage.value,
+    link: linkImage.value,
+  };
+  const elementCard = createCard(inputImage);
+  elementsContainer.prepend(elementCard);  
   closePopup(popupImage);
   formImage.reset();
 };
@@ -116,7 +135,7 @@ function handleFormSubmit(event) {
 
 formProfile.addEventListener('submit', handleFormSubmit);
 
-profileAddButton.addEventListener('click', (event) => {
+profileAddButton.addEventListener('click', () => {
   formImage.reset();
   ValidationForm.hideError();
   openPopup(popupImage);
