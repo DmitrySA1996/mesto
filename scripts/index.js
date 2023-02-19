@@ -40,6 +40,15 @@ const settings = {
   errorClass: 'popup__text-error_active'
 };
 
+const validationFormProfile = createFormValidator(formProfile);
+const validationFormImage = createFormValidator(formImage);
+
+function createFormValidator(formElement) {
+  const validationForm = new FormValidator(settings, formElement);
+  validationForm.enableValidation();
+  return validationForm;
+}
+
 const handleCardClick = (elementsImage, elementsText) => {
   cardImg.src = elementsImage.src;
   cardImg.alt = elementsImage.alt;
@@ -51,7 +60,7 @@ const handleCardClick = (elementsImage, elementsText) => {
 function createCard(element) {
   const card = new Card(element, elementTemplate, handleCardClick);
   const elementCard = card.createCard();
-  
+
 
   return elementCard;
 }
@@ -68,7 +77,7 @@ const handleImageSubmit = (element) => {
     link: linkImage.value,
   };
   const elementCard = createCard(inputImage);
-  elementsContainer.prepend(elementCard);  
+  elementsContainer.prepend(elementCard);
   closePopup(popupImage);
   formImage.reset();
 };
@@ -88,8 +97,7 @@ function openPopup(popup) {
 profileEditText.addEventListener('click', () => {
   nameInput.value = title.textContent;
   infoInput.value = subtitle.textContent;
-  const validationFormProfile = new FormValidator(settings, formProfile);
-  validationFormProfile.enableValidation();
+  validationFormProfile.hideError();
   openPopup(popupProfile);
 });
 
@@ -106,8 +114,7 @@ formProfile.addEventListener('submit', handleFormSubmit);
 
 profileAddButton.addEventListener('click', () => {
   formImage.reset();
-  const validationFormImage = new FormValidator(settings, formImage);
-  validationFormImage.enableValidation();
+  validationFormImage.hideError();
   openPopup(popupImage);
 });
 
