@@ -1,7 +1,12 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { initialCards } from "../utils/Constants.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js"
+import UserInfo from "../components/UserInfo.js"
+
+import { initialCards } from "../utils/constants.js";
 
 const popupProfile = document.querySelector('.popup');
 const containerProfile = popupProfile.querySelector('.popup__container');
@@ -19,13 +24,13 @@ const infoInput = document.querySelector('.popup__text_type_subtitle');
 const elementsContainer = document.querySelector('.elements__cards');
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.elements__card');
 
-const popupImage = document.querySelector('.popup_type_image');
+const popupImage = document.querySelector('.popup_type_image'); 
 const containerImage = popupImage.querySelector('.popup__container');
 const formImage = containerImage.querySelector('.popup__form');
 const nameImage = formImage.querySelector('.popup__text_type_title');
 const linkImage = formImage.querySelector('.popup__text_type_subtitle');
 
-const popupCard = document.querySelector('.popup_type_card');
+const popupCard = new PopupWithImage('.popup_type_card');
 const cardContainer = popupCard.querySelector('.popup__container');
 const cardImg = cardContainer.querySelector('.popup__image');
 const cardSign = cardContainer.querySelector('.popup__sign');
@@ -69,11 +74,22 @@ const handleCardClick = (elementsImage, elementsText) => {
   openPopup(popupCard);
 }
 
-function createCard(element) {
-  const card = new Card(element, elementTemplate, handleCardClick);
-  const elementCard = card.createCard();
+function createCard(data) {
+  const card = new Card(
+    data,
+    elementTemplate,
+    openPopupCard,
 
-  return elementCard;
+    () => {
+      popupConfirmation.open(card)
+    }
+  )
+
+  return card.createCard()
+}
+
+function openPopupCard(name, link) {
+  popupCard.open(name, link)
 }
 
 const handleImageSubmit = (element) => {
