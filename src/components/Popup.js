@@ -1,46 +1,40 @@
 export default class Popup {
-    constructor(popupSelector) {
-        this._popup = document.querySelector(popupSelector)
-        this._button = this._popup.querySelector(".popup__close")
-        this._clickCloseButton = this._handleSubmit.bind(this)
-        this._clickEscClose = this._handleEscClose.bind(this)
-        this._clickClose = this._handleClose.bind(this)
-        this._button.addEventListener("click", this._clickCloseButton)
-    }
+  constructor(selector) {
+    this._popup = document.querySelector(selector)
+    this._handleEscClose = this._handleEscClose.bind(this)
+  }
 
-    open() {
-        this.setEventListeners()
-        this._popup.classList.add("popup_opened")
-    }
+  open() {
+    this._popup.classList.add("popup_opened");
+    document.addEventListener("keydown", this._handleEscClose);
+  }
 
-    close() {
-        this._popup.classList.remove("popup_opened")
-        this.delEventListeners()
-    }
+  close() {
+    this._popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", this._handleEscClose);
+  }
 
-    _handleSubmit() {
-        this.close()
+  _handleEscClose(event) {
+    if (event.key === "Escape") {
+      this.close()
     }
+  }
 
-    _handleEscClose(evt) {
-        if (evt.key === "Escape") {
-            this.close()
-        }
+  _handleClose(event) {
+    if (event.target.classList.contains("popup_opened")) {
+      this.close()
     }
+  }
 
-    _handleClose(evt) {
-        if (evt.target.classList.contains("popup_opened")) {
-            this.close()
-        }
-    }
+setEventListeners() {
+   this._popup.addEventListener("mouseup", () => {
+    this._handleClose(window.event)
+  });
 
-    setEventListeners() {
-        document.addEventListener("keydown", this._clickEscClose)
-        document.addEventListener("mouseup", this._clickClose)
-    }
+   this._popup.querySelector(".popup__close").addEventListener("click", () => {
+    this.close()
+  });
 
-    delEventListeners() {
-        document.removeEventListener("keydown", this._clickEscClose)
-        document.removeEventListener("mouseup", this._clickClose)
-    }
+  }
+  
 }

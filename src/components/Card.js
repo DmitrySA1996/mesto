@@ -6,7 +6,7 @@ export default class Card {
         this.handleCardClick = handleCardClick;
     }
 
-    createCard() {
+    generateCard() {
         this.elementCard = this.templateSelector.cloneNode(true);
 
         this._elementsImage = this.elementCard.querySelector('.elements__image');

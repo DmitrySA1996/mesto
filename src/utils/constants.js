@@ -25,4 +25,44 @@ const initialCards = [
   }
 ];
 
-export { initialCards };
+const settings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__text-error_active'
+};
+
+const profileAddButton = document.querySelector(".profile__add-button")
+
+const profileEditButton = document.querySelector(".profile__edit-text")
+
+const formEditProfile = document.forms.editForm
+
+const formAddProfile = document.forms.addForm
+
+const editInputName = formEditProfile.elements.nameInput
+
+const editJobInput = formEditProfile.elements.jobInput
+
+const elementTemplate = document.querySelector('.element-template').content.querySelector('.elements__card');
+
+const popupConfig = {
+  popupEditSelector: ".popup",
+  popupAddCardSelector: ".popup_type_image",
+  popupImageSelector: ".popup_type_card",
+}
+
+export {
+  popupConfig,
+  profileAddButton,
+  profileEditButton,
+  formEditProfile,
+  editInputName,
+  editJobInput,
+  formAddProfile,
+  initialCards,
+  settings,
+  elementTemplate
+}
