@@ -38,13 +38,13 @@ const profileAddButton = document.querySelector(".profile__add-button")
 
 const profileEditButton = document.querySelector(".profile__edit-text")
 
-const formEditProfile = document.forms.editForm
+const formProfile = document.forms.popup__form
 
-const formAddProfile = document.forms.addForm
+const formImage = document.forms.form
 
-const editInputName = formEditProfile.elements.nameInput
+const editInputName = formProfile.elements.name
 
-const editJobInput = formEditProfile.elements.jobInput
+const editJobInput = formProfile.elements.info
 
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.elements__card');
 
@@ -58,10 +58,10 @@ export {
   popupConfig,
   profileAddButton,
   profileEditButton,
-  formEditProfile,
+  formProfile,
   editInputName,
   editJobInput,
-  formAddProfile,
+  formImage,
   initialCards,
   settings,
   elementTemplate
