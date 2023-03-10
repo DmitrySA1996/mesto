@@ -40,7 +40,7 @@ function createCard(item) {
   ).generateCard()
 }
 
-function formValues(value) {
+function setFormValues(value) {
   userInfo.setUserInfo(value.name, value.info)
   classEditPopup.close()
 }
@@ -51,11 +51,10 @@ const userInfo = new UserInfo({
 })
 
 function openEditProfile() {
-  const { title, subtitle } = userInfo.getUserInfo()
-  editInputName.value = title
-  editJobInput.value = subtitle
-  formEditValidator.hideError()
-  classEditPopup.open()
+  const data = userInfo.getUserInfo();
+  classEditPopup.setInputValues(data);
+  formEditValidator.hideError();
+  classEditPopup.open(data);
 }
 
 function popupAddCardProfile() {
@@ -65,7 +64,7 @@ function popupAddCardProfile() {
 
 const classEditPopup = new PopupWithForm(
   popupConfig.popupEditSelector,
-  formValues
+  setFormValues
 )
 classEditPopup.setEventListeners()
 
