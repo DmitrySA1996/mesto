@@ -1,5 +1,5 @@
 {
-  "name": "yandex.praktikum",
+  "name": "mesto",
   "version": "0.0.1",
   "description": "Learning platform",
   "main": "pages/index.js",

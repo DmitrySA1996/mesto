@@ -5,12 +5,11 @@ import {
   profileAddButton,
   profileEditButton,
   formProfile,
-  editInputName,
-  editJobInput,
   formImage,
   initialCards,
   settings,
-  elementTemplate
+  elementTemplate,
+  elementsApi
 } from "../utils/constants.js"
 
 import Card from "../components/Card.js"
@@ -21,17 +20,21 @@ import PopupWithForm from "../components/PopupWithForm.js"
 import UserInfo from "../components/UserInfo.js"
 
 const formEditValidator = createFormValidator(formProfile);
- 
 const formCardValidator = createFormValidator(formImage);
- 
+const api = new API(elementsApi);
+
 function createFormValidator(formElement) {
- 
+
   const validationForm = new FormValidator(settings, formElement);
- 
+
   validationForm.enableValidation();
- 
+
   return validationForm;
- 
+
+}
+
+function getObjectApi(){
+  return api.objectApi();
 }
 
 function createCard(item) {
@@ -45,10 +48,7 @@ function setFormValues(value) {
   classEditPopup.close()
 }
 
-const userInfo = new UserInfo({
-  titleSelector: ".profile__title",
-  subtitleSelector: ".profile__subtitle",
-})
+const userInfo = new UserInfo(getObjectApi())
 
 function openEditProfile() {
   const data = userInfo.getUserInfo();
