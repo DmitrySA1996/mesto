@@ -56,7 +56,6 @@ const initialCards = [
   
   const elementsApi = {
     token: '4c774ee9-4e81-4dc7-a921-f3ea6d42f00e', 
-    method: 'GET', 
     URL: 'https://mesto.nomoreparties.co/v1/cohort-61/'
   }
   

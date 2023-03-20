@@ -1,24 +1,20 @@
 export default class API {
-    constructor({ token, method, URL }) {
+    constructor({ token, URL }) {
         this._token = token;
-        this._method = method;
-        this._url = `${URL} + cards`;
+        this._url = URL;
     }
 
     objectUser() {
-        fetch(this._url,
+        fetch(`${this._url}/users/me`,
             {
-                method: this._method,
                 headers: {
-                    Authorization: this._token
+                    authorization: this._token
                 }
             }
         )
-            .then((data) => {
-                return data; 
-            })
-            .catch((err) => {
-                console.log('Ошибка. Запрос не выполнен: ', err);
+            .then(res => res.json())
+            .then((result) => {
+                return result;
             });
     }
 }

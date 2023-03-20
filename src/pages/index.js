@@ -18,6 +18,7 @@ import Section from "../components/Section.js"
 import PopupWithImage from "../components/PopupWithImage.js"
 import PopupWithForm from "../components/PopupWithForm.js"
 import UserInfo from "../components/UserInfo.js"
+import API from "../components/API.js"
 
 const formEditValidator = createFormValidator(formProfile);
 const formCardValidator = createFormValidator(formImage);
@@ -33,10 +34,6 @@ function createFormValidator(formElement) {
 
 }
 
-function getObjectApi(){
-  return api.objectApi();
-}
-
 function createCard(item) {
   return new Card(item, elementTemplate, () =>
     popupOpenImage.open(item)
@@ -44,14 +41,14 @@ function createCard(item) {
 }
 
 function setFormValues(value) {
-  userInfo.setUserInfo(value.name, value.info)
+  user.setUserInfo(value)
   classEditPopup.close()
 }
 
-const userInfo = new UserInfo(getObjectApi())
+const user = new UserInfo(api.objectUser);
 
 function openEditProfile() {
-  const data = userInfo.getUserInfo();
+  const data = user.getUserInfo();
   classEditPopup.setInputValues(data);
   formEditValidator.hideError();
   classEditPopup.open(data);
