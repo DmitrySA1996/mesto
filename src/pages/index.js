@@ -22,69 +22,174 @@ import API from "../components/API.js"
 
 const formEditValidator = createFormValidator(formProfile);
 const formCardValidator = createFormValidator(formImage);
-const api = new API(elementsApi);
+const api = new API(elementsApi)
 
-function createFormValidator(formElement) {
+function createCard(data) {
+  const card = new Card(
+    data,
+    ".element-template",
+    openPopupImage,
 
-  const validationForm = new FormValidator(settings, formElement);
+    userId,
+    async () => {
+      try {
+        const response = await api.addLike(data._id)
+        card.like()
+        card.likesCount(response)
+      } catch (error) {
+        return console.log(`Ошибка: ${error}`)
+      }
+    },
+    async () => {
+      try {
+        const response = await api.removeLike(data._id)
+        card.dislike()
+        card.likesCount(response)
+      } catch (error) {
+        return console.log(`Ошибка: ${error}`)
+      }
+    },
+    () => {
+      popupConfirmation.open(card)
+    }
+  )
 
-  validationForm.enableValidation();
-
-  return validationForm;
-
+  return card.generateCard()
 }
 
-function createCard(item) {
-  return new Card(item, elementTemplate, () =>
-    popupOpenImage.open(item)
-  ).generateCard()
+function openPopupImage(name, link) {
+  popupImage.open(name, link)
 }
 
-function setFormValues(value) {
-  user.setUserInfo(value)
-  classEditPopup.close()
+async function handleSubmitFormEditProfile(data) {
+  try {
+    const userProfile = await api.editProfileUserInfo(data)
+    user.setUserInfo(userProfile)
+  } catch (error) {
+    return console.log(`Ошибка: ${error}`)
+  }
 }
 
-const user = new UserInfo(api.objectUser);
-
-function openEditProfile() {
-  const data = user.getUserInfo();
-  classEditPopup.setInputValues(data);
-  formEditValidator.hideError();
-  classEditPopup.open(data);
+async function handleSubmitFormUpdateAvatar(data) {
+  try {
+    const userProfile = await api.updateProfileUserAvatar(data)
+    user.setUserInfo(userProfile)
+  } catch (error) {
+    return console.log(`Ошибка: ${error}`)
+  }
 }
 
-function popupAddCardProfile() {
-  formCardValidator.hideError()
-  classCardPopup.open()
+async function handleSubmitFormAddCard(data) {
+  try {
+    const newCard = await api.addNewCard(data)
+    cardList.addItem(createCard(newCard))
+  } catch (error) {
+    return console.log(`Ошибка: ${error}`)
+  }
 }
 
-const classEditPopup = new PopupWithForm(
-  popupConfig.popupEditSelector,
-  setFormValues
-)
-classEditPopup.setEventListeners()
+const popupImage = new PopupWithImage(popupConfig.popupImageSelector)
 
-const cardSection = new Section(
-  {
-    renderer: (item) => cardSection.addItem(createCard(item)),
-  },
-  ".elements__cards"
-)
-
-const classCardPopup = new PopupWithForm(
+const popupAdd = new PopupWithForm(
   popupConfig.popupAddCardSelector,
-  (item) => {
-    cardSection.addItem(createCard(item))
-    classCardPopup.close()
+  handleSubmitFormAddCard
+)
+
+const popupEdit = new PopupWithForm(
+  popupConfig.popupEditSelector,
+  handleSubmitFormEditProfile
+)
+
+const popupAvatar = new PopupWithForm(
+  popupConfig.popupUpdateAvatarSelector,
+  handleSubmitFormUpdateAvatar
+)
+
+const user = new UserInfo({
+  name: nameProfile,
+  about: aboutProfile,
+  avatar: avatarProfile,
+})
+
+profileEditButton.addEventListener(
+  "click",
+  () => {
+    popupEdit.open()
+    popupEdit.setInputValue(user.getUserInfo())
+    validatorFormEditProfile.disableSubmitButton()
+  },
+  false
+)
+
+profileUpdateAvatar.addEventListener(
+  "click",
+  () => {
+    popupAvatar.open()
+    validatorFormUpdateAvatar.disableSubmitButton()
+  },
+  false
+)
+
+profileAddButton.addEventListener(
+  "click",
+  () => {
+    popupAdd.open()
+    validatorFormAddProfile.disableSubmitButton()
+  },
+  false
+)
+
+// Для каждой проверяемой формы новый экземпляр класса FormValidator
+const validatorFormEditProfile = new FormValidator(
+  validationConfig,
+  formEditProfile
+)
+
+validatorFormEditProfile.enableValidation()
+
+const validatorFormAddProfile = new FormValidator(
+  validationConfig,
+  formAddProfile
+)
+
+validatorFormAddProfile.enableValidation()
+
+const validatorFormUpdateAvatar = new FormValidator(
+  validationConfig,
+  formUpdateAvatar
+)
+
+validatorFormUpdateAvatar.enableValidation()
+
+const popupConfirmation = new PopupConfirmation(
+  popupConfig.popupDeleteSelector,
+  async (card) => {
+    api
+      .removeCard(card._id)
+      .then(() => {
+        card.remove()
+        popupConfirmation.close()
+      })
+      .catch((error) => console.log(`Ошибка: ${error}`))
   }
 )
-classCardPopup.setEventListeners()
 
-const popupOpenImage = new PopupWithImage(popupConfig.popupImageSelector)
-popupOpenImage.setEventListeners()
+const cardList = new Section(
+  {
+    renderer: (data) => {
+      const card = createCard(data)
 
-profileAddButton.addEventListener("click", () => popupAddCardProfile())
-profileEditButton.addEventListener("click", () => openEditProfile())
+      cardList.addItem(card)
+    },
+  },
+  ".elements"
+)
 
-cardSection.renderItems(initialCards.reverse())
+Promise.all([api.getRealUserInfo(), api.getInitialCards()])
+  .then(([userProfile, cards]) => {
+    user.setUserInfo(userProfile)
+    userId = userProfile._id
+    cardList.renderItems(cards)
+  })
+
+  .catch((error) => console.log(`Ошибка: ${error}`))
