@@ -1,6 +1,7 @@
 .profile__avatar {
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 @media screen and (max-width: 597px) {

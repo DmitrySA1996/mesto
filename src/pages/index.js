@@ -1,12 +1,12 @@
 import './index.css';
 
 import {
+  profileUpdateAvatar,
   popupConfig,
   profileAddButton,
   profileEditButton,
   formProfile,
   formImage,
-  initialCards,
   settings,
   elementTemplate,
   elementsApi
@@ -20,9 +20,9 @@ import PopupWithForm from "../components/PopupWithForm.js"
 import UserInfo from "../components/UserInfo.js"
 import API from "../components/API.js"
 
-const formEditValidator = createFormValidator(formProfile);
-const formCardValidator = createFormValidator(formImage);
-const api = new API(elementsApi)
+/*const formEditValidator = createFormValidator(formProfile);
+const formCardValidator = createFormValidator(formImage);*/
+const api = new API(elementsApi);
 
 function createCard(data) {
   const card = new Card(
@@ -63,8 +63,8 @@ function openPopupImage(name, link) {
 
 async function handleSubmitFormEditProfile(data) {
   try {
-    const userProfile = await api.editProfileUserInfo(data)
-    user.setUserInfo(userProfile)
+    const user= await api.editProfileUserInfo(data)
+    user.setUserInfo(user)
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
   }
@@ -72,8 +72,8 @@ async function handleSubmitFormEditProfile(data) {
 
 async function handleSubmitFormUpdateAvatar(data) {
   try {
-    const userProfile = await api.updateProfileUserAvatar(data)
-    user.setUserInfo(userProfile)
+    const user = await api.updateProfileUserAvatar(data)
+    user.setUserInfo(user)
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
   }
@@ -104,12 +104,6 @@ const popupAvatar = new PopupWithForm(
   popupConfig.popupUpdateAvatarSelector,
   handleSubmitFormUpdateAvatar
 )
-
-const user = new UserInfo({
-  name: nameProfile,
-  about: aboutProfile,
-  avatar: avatarProfile,
-})
 
 profileEditButton.addEventListener(
   "click",
@@ -186,9 +180,9 @@ const cardList = new Section(
 )
 
 Promise.all([api.getRealUserInfo(), api.getInitialCards()])
-  .then(([userProfile, cards]) => {
-    user.setUserInfo(userProfile)
-    userId = userProfile._id
+  .then(([user, cards]) => {
+    user.setUserInfo(user)
+    userId = user._id
     cardList.renderItems(cards)
   })
 
