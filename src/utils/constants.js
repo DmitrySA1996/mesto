@@ -32,8 +32,10 @@ const popupConfig = {
 
 const elementsApi = {
   token: '4c774ee9-4e81-4dc7-a921-f3ea6d42f00e',
-  URL: 'https://mesto.nomoreparties.co/v1/cohort-61/'
+  URL: 'https://mesto.nomoreparties.co/v1/cohort-61'
 }
+
+const formUpdateAvatar = document.forms.editAvatarForm
 
 export {
   profileUpdateAvatar,
@@ -41,9 +43,10 @@ export {
   profileAddButton,
   profileEditButton,
   formProfile,
+  formImage,
+  formUpdateAvatar,
   editInputName,
   editJobInput,
-  formImage,
   settings,
   elementTemplate,
   elementsApi

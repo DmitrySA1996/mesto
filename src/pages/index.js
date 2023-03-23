@@ -7,6 +7,7 @@ import {
   profileEditButton,
   formProfile,
   formImage,
+  formUpdateAvatar,
   settings,
   elementTemplate,
   elementsApi
@@ -23,6 +24,11 @@ import API from "../components/API.js"
 /*const formEditValidator = createFormValidator(formProfile);
 const formCardValidator = createFormValidator(formImage);*/
 const api = new API(elementsApi);
+
+const validatorFormUpdateAvatar = new FormValidator(
+  settings,
+  formUpdateAvatar
+)
 
 function createCard(data) {
   const card = new Card(
@@ -105,12 +111,16 @@ const popupAvatar = new PopupWithForm(
   handleSubmitFormUpdateAvatar
 )
 
+popupAdd.setEventListeners();
+popupEdit.setEventListeners();
+popupAvatar.setEventListeners();
+
 profileEditButton.addEventListener(
   "click",
   () => {
     popupEdit.open()
     popupEdit.setInputValue(user.getUserInfo())
-    validatorFormEditProfile.disableSubmitButton()
+    validatorFormEditProfile.hideError()
   },
   false
 )
@@ -119,7 +129,7 @@ profileUpdateAvatar.addEventListener(
   "click",
   () => {
     popupAvatar.open()
-    validatorFormUpdateAvatar.disableSubmitButton()
+    validatorFormUpdateAvatar.hideError()
   },
   false
 )
@@ -128,32 +138,24 @@ profileAddButton.addEventListener(
   "click",
   () => {
     popupAdd.open()
-    validatorFormAddProfile.disableSubmitButton()
+    validatorFormAddProfile.hideError()
   },
   false
 )
 
-// Для каждой проверяемой формы новый экземпляр класса FormValidator
 const validatorFormEditProfile = new FormValidator(
-  validationConfig,
-  formEditProfile
+  settings,
+  formProfile
 )
 
 validatorFormEditProfile.enableValidation()
 
 const validatorFormAddProfile = new FormValidator(
-  validationConfig,
-  formAddProfile
+  settings,
+  formImage
 )
 
 validatorFormAddProfile.enableValidation()
-
-const validatorFormUpdateAvatar = new FormValidator(
-  validationConfig,
-  formUpdateAvatar
-)
-
-validatorFormUpdateAvatar.enableValidation()
 
 const popupConfirmation = new PopupConfirmation(
   popupConfig.popupDeleteSelector,
