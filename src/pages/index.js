@@ -40,6 +40,17 @@ const validatorFormUpdateAvatar = new FormValidator(
   formUpdateAvatar
 )
 
+const cardList = new Section(
+  {
+    renderer: (data) => {
+      const card = createCard(data)
+
+      cardList.addItem(card)
+    },
+  },
+  ".elements__cards"
+)
+
 const popupImage = new PopupWithImage(popupConfig.popupImageSelector)
 
 const popupAdd = new PopupWithForm(
@@ -178,17 +189,6 @@ const popupConfirmation = new PopupConfirmation(
       })
       .catch((error) => console.log(`Ошибка: ${error}`))
   }
-)
-
-const cardList = new Section(
-  {
-    renderer: (data) => {
-      const card = createCard(data)
-
-      cardList.addItem(card)
-    },
-  },
-  ".elements"
 )
 
 Promise.all([api.getRealUserInfo(), api.getInitialCards()])
