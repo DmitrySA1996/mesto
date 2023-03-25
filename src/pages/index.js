@@ -31,6 +31,8 @@ const user = new UserInfo({
   avatar: editAvatar
 })
 
+let userId;
+
 const api = new API(elementsApi);
 
 const validatorFormUpdateAvatar = new FormValidator(
@@ -58,7 +60,7 @@ const popupAvatar = new PopupWithForm(
 function createCard(data) {
   const card = new Card(
     data,
-    ".element-template",
+    elementTemplate,
     openPopupImage,
 
     userId,
@@ -94,8 +96,8 @@ function openPopupImage(name, link) {
 
 async function handleSubmitFormEditProfile(data) {
   try {
-    const user= await api.editProfileUserInfo(data)
-    user.setUserInfo(user)
+    const userProfile= await api.editProfileUserInfo(data)
+    userProfile.setUserInfo(user)
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
   }
@@ -190,9 +192,9 @@ const cardList = new Section(
 )
 
 Promise.all([api.getRealUserInfo(), api.getInitialCards()])
-  .then(([user, cards]) => {
-    user.setUserInfo(user)
-    userId = user._id
+  .then(([userProfile, cards]) => {
+    user.setUserInfo(userProfile)
+    userId = userProfile._id
     cardList.renderItems(cards)
   })
 

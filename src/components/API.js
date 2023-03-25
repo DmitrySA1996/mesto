@@ -1,4 +1,4 @@
-export default class Api {
+export default class API {
   constructor({ token, URL }) {
     this._token = token;
     this._url = URL;
@@ -14,14 +14,18 @@ export default class Api {
 
   async getRealUserInfo() {
     const response = await fetch(`${this._url}/users/me`, {
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
     })
     return this._handleSendingRequest(response)
   }
 
  async getInitialCards() {
     const response = await fetch(`${this._url}/cards`, {
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
     })
     return this._handleSendingRequest(response)
   }
@@ -29,7 +33,9 @@ export default class Api {
  async editProfileUserInfo(data) {
     const response = await fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -41,7 +47,9 @@ export default class Api {
   async addNewCard(data) {
     const response = await fetch(`${this._url}/cards`, {
       method: "POST",
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
       body: JSON.stringify(data),
     })
     return this._handleSendingRequest(response)
@@ -50,7 +58,9 @@ export default class Api {
   async addLike(cardId) {
     const response = await fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "PUT",
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
     })
     return this._handleSendingRequest(response)
   }
@@ -58,7 +68,9 @@ export default class Api {
   async removeCard(cardId) {
     const response = await fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
     })
     return this._handleSendingRequest(response)
   }
@@ -66,7 +78,9 @@ export default class Api {
   async removeLike(cardId) {
     const response = await fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "DELETE",
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
     })
     return this._handleSendingRequest(response)
   }
@@ -74,7 +88,9 @@ export default class Api {
   async updateProfileUserAvatar(data) {
     const response = await fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      authorization: this._token,
+      headers: {
+        authorization: this._token
+      },
       body: JSON.stringify({
         avatar: data.avatar,
       }),
