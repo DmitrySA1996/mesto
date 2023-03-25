@@ -140,7 +140,7 @@ profileEditButton.addEventListener(
   "click",
   () => {
     popupEdit.open()
-    popupEdit.setInputValue(user.getUserInfo())
+    popupEdit.setInputValues(user.getUserInfo())
     validatorFormEditProfile.hideError()
   },
   false
