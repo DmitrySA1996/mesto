@@ -135,6 +135,7 @@ async function handleSubmitFormAddCard(data) {
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
 popupAvatar.setEventListeners();
+popupImage.setEventListeners();
 
 profileEditButton.addEventListener(
   "click",
@@ -169,14 +170,10 @@ const validatorFormEditProfile = new FormValidator(
   formProfile
 )
 
-validatorFormEditProfile.enableValidation()
-
 const validatorFormAddProfile = new FormValidator(
   settings,
   formImage
 )
-
-validatorFormAddProfile.enableValidation()
 
 const popupConfirmation = new PopupConfirmation(
   popupConfig.popupDeleteSelector,
@@ -190,6 +187,10 @@ const popupConfirmation = new PopupConfirmation(
       .catch((error) => console.log(`Ошибка: ${error}`))
   }
 )
+
+validatorFormAddProfile.enableValidation()
+validatorFormEditProfile.enableValidation()
+validatorFormUpdateAvatar.enableValidation()
 
 Promise.all([api.getRealUserInfo(), api.getInitialCards()])
   .then(([userProfile, cards]) => {
