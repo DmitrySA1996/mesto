@@ -9,6 +9,9 @@ import {
   formImage,
   formUpdateAvatar,
   settings,
+  editInputName,
+  editJobInput,
+  editAvatar,
   elementTemplate,
   elementsApi
 } from "../utils/constants.js"
@@ -18,16 +21,38 @@ import FormValidator from "../components/FormValidator.js"
 import Section from "../components/Section.js"
 import PopupWithImage from "../components/PopupWithImage.js"
 import PopupWithForm from "../components/PopupWithForm.js"
+import PopupConfirmation from "../components/PopupConfirmation.js"
 import UserInfo from "../components/UserInfo.js"
-import API from "../components/API.js"
+import API from "../components/API.js"  
 
-/*const formEditValidator = createFormValidator(formProfile);
-const formCardValidator = createFormValidator(formImage);*/
+const user = new UserInfo({
+  name: editInputName,
+  about: editJobInput,
+  avatar: editAvatar
+})
+
 const api = new API(elementsApi);
 
 const validatorFormUpdateAvatar = new FormValidator(
   settings,
   formUpdateAvatar
+)
+
+const popupImage = new PopupWithImage(popupConfig.popupImageSelector)
+
+const popupAdd = new PopupWithForm(
+  popupConfig.popupAddCardSelector,
+  handleSubmitFormAddCard
+)
+
+const popupEdit = new PopupWithForm(
+  popupConfig.popupEditSelector,
+  handleSubmitFormEditProfile
+)
+
+const popupAvatar = new PopupWithForm(
+  popupConfig.popupUpdateAvatarSelector,
+  handleSubmitFormUpdateAvatar
 )
 
 function createCard(data) {
@@ -93,23 +118,6 @@ async function handleSubmitFormAddCard(data) {
     return console.log(`Ошибка: ${error}`)
   }
 }
-
-const popupImage = new PopupWithImage(popupConfig.popupImageSelector)
-
-const popupAdd = new PopupWithForm(
-  popupConfig.popupAddCardSelector,
-  handleSubmitFormAddCard
-)
-
-const popupEdit = new PopupWithForm(
-  popupConfig.popupEditSelector,
-  handleSubmitFormEditProfile
-)
-
-const popupAvatar = new PopupWithForm(
-  popupConfig.popupUpdateAvatarSelector,
-  handleSubmitFormUpdateAvatar
-)
 
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();

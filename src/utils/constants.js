@@ -17,9 +17,10 @@ const formProfile = document.forms.popup__form
 
 const formImage = document.forms.form
 
-const editInputName = formProfile.elements.name
-
-const editJobInput = formProfile.elements.info
+/* Профиль */
+const editInputName = formProfile.elements.name;
+const editJobInput = formProfile.elements.info;
+const editAvatar = document.querySelector(".profile__image");
 
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.elements__card');
 
@@ -27,7 +28,8 @@ const popupConfig = {
   popupEditSelector: ".popup",
   popupAddCardSelector: ".popup_type_image",
   popupImageSelector: ".popup_type_card",
-  popupUpdateAvatarSelector: ".popup_type_update-avatar"
+  popupUpdateAvatarSelector: ".popup_type_update-avatar",
+  popupDeleteSelector: ".popup_type_confirmation"
 }
 
 const elementsApi = {
@@ -47,6 +49,7 @@ export {
   formUpdateAvatar,
   editInputName,
   editJobInput,
+  editAvatar,
   settings,
   elementTemplate,
   elementsApi
