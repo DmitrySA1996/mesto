@@ -1,0 +1,15 @@
+.profile__image {
+    margin-right: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    opacity: 1;
+    transition-duration: 3s;
+}
+
+@media screen and (max-width: 597px) {
+    .profile__image {
+        margin: 38px auto 22px auto;
+    }
+}
