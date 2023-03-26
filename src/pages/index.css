@@ -51,6 +51,7 @@
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__texts/elements__texts.css);
 @import url(../blocks/elements/__text/elements__text.css);
+@import url(../blocks/elements/__like-group/elements__like-group.css);
 @import url(../blocks/elements/__like/elements__like.css);
 @import url(../blocks/elements/__like/_active/elements__like_active.css);
 @import url(../blocks/elements/__amount-like/elements__amount-like.css);

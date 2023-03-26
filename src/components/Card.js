@@ -14,8 +14,8 @@ export default class Card {
         this._like = this.elementCard.querySelector('.elements__like');
         this._button = this.elementCard.querySelector('.elements__delete');
 
-        this._likesCount = this._cardElement.querySelector(".element__count-like");
-        this._likesCount.textContent = this._likes.length;
+        this._likesCount = this.elementCard.querySelector(".elements__amount-like");
+        this._likesCount.textContent = this._like.length;
 
         this._nameCard();
         this._setEventHandlers();
@@ -38,7 +38,9 @@ export default class Card {
     }
 
     _deleteCard = () => {
-        this.elementCard.remove()
+        if (this._ownerId !== this._userId) {
+            this.elementCard.remove()
+        }
     }
 
     _setEventHandlers = () => {

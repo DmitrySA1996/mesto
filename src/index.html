@@ -17,7 +17,7 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__avatar">
-                    <img class="profile__image" src="<%=require('./images/AVATAR.jpg')%>" alt="Аватар">
+                    <img class="profile__image" name="avatar" src="<%=require('./images/AVATAR.jpg')%>" alt="Аватар">
                     <button class="profile__edit-avatar" type="button">
                         <img class="profile__pencil" src="<%=require('./images/pencil.svg')%>" alt="Карандаш">
                     </button>
@@ -113,8 +113,10 @@
                 <img class="elements__image popup__text_type_title">
                 <article class="elements__texts">
                     <h2 class="elements__text popup__text_type_subtitle"></h2>
-                    <button type="button" class="elements__like"></button>
-                    <p class="elements__amount-like"></p>
+                    <article class="elements__like-group">
+                        <button type="button" class="elements__like"></button>
+                        <p class="elements__amount-like"></p>
+                    </article>
                 </article>
             </li>
         </template>

@@ -1,0 +1,4 @@
+.elements__like-group {
+    display: flex;
+    flex-direction: column;
+}

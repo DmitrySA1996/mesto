@@ -159,15 +159,6 @@ profileUpdateAvatar.addEventListener(
   false
 )
 
-profileAddButton.addEventListener(
-  "click",
-  () => {
-    popupAdd.open()
-    validatorFormAddProfile.hideError()
-  },
-  false
-)
-
 const validatorFormEditProfile = new FormValidator(
   settings,
   formProfile
@@ -176,6 +167,15 @@ const validatorFormEditProfile = new FormValidator(
 const validatorFormAddProfile = new FormValidator(
   settings,
   formImage
+)
+
+profileAddButton.addEventListener(
+  "click",
+  () => {
+    popupAdd.open()
+    validatorFormAddProfile.hideError()
+  },
+  false
 )
 
 const popupConfirmation = new PopupConfirmation(

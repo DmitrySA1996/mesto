@@ -3,7 +3,7 @@ const settings = {
   inputSelector: '.popup__text',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: '.popup__input-error',
+  inputErrorClass: '.popup__text-error',
   errorClass: 'popup__text-error_active'
 };
 
@@ -18,7 +18,7 @@ const formUpdateAvatar = document.forms.editAvatarForm
 /* Профиль */
 const editInputName = formProfile.elements.name;
 const editJobInput = formProfile.elements.about;
-const editAvatar = document.querySelector(".profile__image");
+const editAvatar = formUpdateAvatar.elements.avatar;
 
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.elements__card');
 
