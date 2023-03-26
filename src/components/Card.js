@@ -1,7 +1,10 @@
 export default class Card {
-    constructor({ name, link }, templateSelector, handleCardClick) {
+    constructor({ name, link, likes, id }, templateSelector, handleCardClick, userId) {
         this._name = name;
         this._link = link;
+        this._likes = likes;
+        this._id = id;
+        this._userId = userId;
         this.templateSelector = templateSelector;
         this.handleCardClick = handleCardClick;
     }
@@ -15,7 +18,7 @@ export default class Card {
         this._button = this.elementCard.querySelector('.elements__delete');
 
         this._likesCount = this.elementCard.querySelector(".elements__amount-like");
-        this._likesCount.textContent = this._like.length;
+        this._likesCount.textContent = this._likes.length;
 
         this._nameCard();
         this._setEventHandlers();
@@ -38,9 +41,7 @@ export default class Card {
     }
 
     _deleteCard = () => {
-        if (this._ownerId !== this._userId) {
-            this.elementCard.remove()
-        }
+        this.elementCard.remove()
     }
 
     _setEventHandlers = () => {

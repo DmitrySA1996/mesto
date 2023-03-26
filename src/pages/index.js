@@ -73,12 +73,10 @@ function createCard(data) {
     data,
     elementTemplate,
     openPopupImage,
-
     userId,
     async () => {
       try {
         const response = await api.addLike(data._id)
-        card.like()
         card.likesCount(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
@@ -87,7 +85,6 @@ function createCard(data) {
     async () => {
       try {
         const response = await api.removeLike(data._id)
-        card.dislike()
         card.likesCount(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
