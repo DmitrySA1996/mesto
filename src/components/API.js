@@ -34,6 +34,7 @@ export default class API {
     const response = await fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: {
+        'Content-Type': 'application/json',
         authorization: this._token
       },
       body: JSON.stringify({
@@ -48,6 +49,7 @@ export default class API {
     const response = await fetch(`${this._url}/cards`, {
       method: "POST",
       headers: {
+        'Content-Type': 'application/json',
         authorization: this._token
       },
       body: JSON.stringify(data),
@@ -89,6 +91,7 @@ export default class API {
     const response = await fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: {
+        'Content-Type': 'application/json',
         authorization: this._token
       },
       body: JSON.stringify({
