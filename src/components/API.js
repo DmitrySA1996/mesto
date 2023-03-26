@@ -39,7 +39,7 @@ export default class API {
       },
       body: JSON.stringify({
         name: data.name,
-        about: data.info,
+        about: data.about,
       }),
     })
     return this._handleSendingRequest(response)

@@ -108,7 +108,8 @@ function openPopupImage(name, link) {
 async function handleSubmitFormEditProfile(data) {
   try {
     const userProfile= await api.editProfileUserInfo(data)
-    userProfile.setUserInfo(user)
+    user.setUserInfo(userProfile)    
+    popupEdit.close()
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
   }
@@ -116,8 +117,9 @@ async function handleSubmitFormEditProfile(data) {
 
 async function handleSubmitFormUpdateAvatar(data) {
   try {
-    const user = await api.updateProfileUserAvatar(data)
-    user.setUserInfo(user)
+    const userProfile = await api.updateProfileUserAvatar(data)
+    user.setUserInfo(userProfile)
+    popupAvatar.close()
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
   }
@@ -126,7 +128,8 @@ async function handleSubmitFormUpdateAvatar(data) {
 async function handleSubmitFormAddCard(data) {
   try {
     const newCard = await api.addNewCard(data)
-    cardList.addItem(createCard(newCard))
+    cardList.addItem(createCard(newCard))    
+    popupAdd.close()
   } catch (error) {
     return console.log(`Ошибка: ${error}`)
   }

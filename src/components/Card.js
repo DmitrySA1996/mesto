@@ -12,13 +12,20 @@ export default class Card {
         this._elementsImage = this.elementCard.querySelector('.elements__image');
         this._elementsText = this.elementCard.querySelector('.elements__text');
         this._like = this.elementCard.querySelector('.elements__like');
-        this._button = this.elementCard.querySelector('.elements__delete')
+        this._button = this.elementCard.querySelector('.elements__delete');
+
+        this._likesCount = this._cardElement.querySelector(".element__count-like");
+        this._likesCount.textContent = this._likes.length;
 
         this._nameCard();
         this._setEventHandlers();
 
         return this.elementCard;
     };
+
+    likesCount(res) {
+        this._likesCount.textContent = `${res.likes.length}`
+    }
 
     _nameCard = () => {
         this._elementsImage.src = this._link;
