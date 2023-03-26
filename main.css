@@ -903,6 +903,10 @@ template {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.elements__like-group {
+    display: flex;
+    flex-direction: column;
+}
 .elements__like {
     width: 22px;
     height: 19px;
@@ -926,6 +930,16 @@ template {
     display: inline-block;
     background-image: url(08af6fbb37d19d4aa333.svg);
     opacity: 1;
+}
+.elements__amount-like {
+    margin: 3px 0 0 0;
+    max-width: 10px;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
 }
 .footer {
     margin: 0;
