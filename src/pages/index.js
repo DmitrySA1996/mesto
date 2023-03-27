@@ -134,11 +134,6 @@ async function handleSubmitFormAddCard(data) {
   }
 }
 
-popupAdd.setEventListeners();
-popupEdit.setEventListeners();
-popupAvatar.setEventListeners();
-popupImage.setEventListeners();
-
 profileEditButton.addEventListener(
   "click",
   () => {
@@ -177,6 +172,10 @@ profileAddButton.addEventListener(
   false
 )
 
+validatorFormAddProfile.enableValidation()
+validatorFormEditProfile.enableValidation()
+validatorFormUpdateAvatar.enableValidation()
+
 const popupConfirmation = new PopupConfirmation(
   popupConfig.popupDeleteSelector,
   async (card) => {
@@ -190,9 +189,11 @@ const popupConfirmation = new PopupConfirmation(
   }
 )
 
-validatorFormAddProfile.enableValidation()
-validatorFormEditProfile.enableValidation()
-validatorFormUpdateAvatar.enableValidation()
+popupAdd.setEventListeners();
+popupEdit.setEventListeners();
+popupAvatar.setEventListeners();
+popupImage.setEventListeners();
+popupConfirmation.setEventListeners();
 
 Promise.all([api.getRealUserInfo(), api.getInitialCards()])
   .then(([userProfile, cards]) => {

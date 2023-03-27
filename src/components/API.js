@@ -4,16 +4,17 @@ export default class API {
     this._url = URL;
   }
 
- _handleSendingRequest(res) {
+  _handleSendingRequest(res) {
     if (res.ok) {
       return Promise.resolve(res.json())
     }
 
-   return Promise.reject(`Ошибка: ${res.status}`)
+    return Promise.reject(`Ошибка: ${res.status}`)
   }
 
   async getRealUserInfo() {
     const response = await fetch(`${this._url}/users/me`, {
+      method: "GET",
       headers: {
         authorization: this._token
       },
@@ -21,8 +22,9 @@ export default class API {
     return this._handleSendingRequest(response)
   }
 
- async getInitialCards() {
+  async getInitialCards() {
     const response = await fetch(`${this._url}/cards`, {
+      method: "GET",
       headers: {
         authorization: this._token
       },
@@ -30,7 +32,7 @@ export default class API {
     return this._handleSendingRequest(response)
   }
 
- async editProfileUserInfo(data) {
+  async editProfileUserInfo(data) {
     const response = await fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: {
@@ -73,7 +75,7 @@ export default class API {
       headers: {
         'Content-Type': 'application/json',
         authorization: this._token
-      },
+      }
     })
     return this._handleSendingRequest(response)
   }
@@ -82,6 +84,7 @@ export default class API {
     const response = await fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: {
+        'Content-Type': 'application/json',
         authorization: this._token
       },
     })

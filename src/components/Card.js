@@ -64,7 +64,6 @@ export default class Card {
     }
 
     _setEventHandlers = () => {
-        this._button.addEventListener("click", () => this._deleteCard)
         this._likeButton.addEventListener("click", () => {
             if (this._likeButton.classList.contains("elements__like_active")) {
                 this._dislike()
@@ -75,6 +74,9 @@ export default class Card {
         this._elementsImage.addEventListener("click", () =>
             this.handleCardClick(this._elementsImage, this._elementsText)
         )
+        this._button.addEventListener("click", () => {
+            this._deleteCard(this._id)
+        })
     }
 
 }
