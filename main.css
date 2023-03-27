@@ -932,7 +932,7 @@ template {
     opacity: 1;
 }
 .elements__amount-like {
-    margin: 3px 0 0 0;
+    margin: 3px auto 0 auto;
     max-width: 10px;
     font-family: "Inter";
     font-weight: 400;
