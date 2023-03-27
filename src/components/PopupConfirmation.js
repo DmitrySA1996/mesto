@@ -16,7 +16,7 @@ export default class PopupConfirmation extends Popup {
     super.open()
   }
 
-  close() {   
+  close(card) {   
     this._card = card
     super.close()
   }

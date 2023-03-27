@@ -15,8 +15,8 @@ export default class FormValidator {
   
   hideError() {
     this._toggleButtonState();
-    this._inputList.forEach((inputElement) => {
-      this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+    this._inputList.forEach((inputElement) => {      
+    this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
       this._hideInputError(inputElement);
     });
   };

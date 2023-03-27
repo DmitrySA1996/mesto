@@ -73,7 +73,6 @@ export default class API {
     const response = await fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
         authorization: this._token
       }
     })

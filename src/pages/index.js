@@ -40,6 +40,16 @@ const validatorFormUpdateAvatar = new FormValidator(
   formUpdateAvatar
 )
 
+const validatorFormEditProfile = new FormValidator(
+  settings,
+  formProfile
+)
+
+const validatorFormAddProfile = new FormValidator(
+  settings,
+  formImage
+)
+
 const cardList = new Section(
   {
     renderer: (data) => {
@@ -153,16 +163,6 @@ profileUpdateAvatar.addEventListener(
   false
 )
 
-const validatorFormEditProfile = new FormValidator(
-  settings,
-  formProfile
-)
-
-const validatorFormAddProfile = new FormValidator(
-  settings,
-  formImage
-)
-
 profileAddButton.addEventListener(
   "click",
   () => {
@@ -183,7 +183,7 @@ const popupConfirmation = new PopupConfirmation(
       .removeCard(card._id)
       .then(() => {
         card.deleteCard()
-        popupConfirmation.close()
+        popupConfirmation.close(card)
       })
       .catch((error) => console.log(`Ошибка: ${error}`))
   }
