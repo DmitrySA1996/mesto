@@ -77,6 +77,7 @@ function createCard(data) {
     async () => {
       try {
         const response = await api.addLike(data._id)
+        card.toggleLike();
         card.likesCount(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
@@ -85,6 +86,7 @@ function createCard(data) {
     async () => {
       try {
         const response = await api.removeLike(data._id)
+        card.untoggleLike();
         card.likesCount(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
@@ -181,7 +183,7 @@ const popupConfirmation = new PopupConfirmation(
     api
       .removeCard(card._id)
       .then(() => {
-        card.remove()
+        card.deleteCard()
         popupConfirmation.close()
       })
       .catch((error) => console.log(`Ошибка: ${error}`))

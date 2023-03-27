@@ -1,5 +1,13 @@
 export default class Card {
-    constructor(data, templateSelector, handleCardClick, userId) {
+    constructor(
+        data,
+        templateSelector,
+        handleCardClick,
+        userId,
+        like,
+        dislike,
+        deleteCard
+    ) {
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes;
@@ -8,6 +16,9 @@ export default class Card {
         this.templateSelector = templateSelector;
         this.handleCardClick = handleCardClick;
         this._userId = userId;
+        this._like = like;
+        this._dislike = dislike;
+        this._deleteCard = deleteCard;
     }
 
     generateCard() {
@@ -15,14 +26,11 @@ export default class Card {
 
         this._elementsImage = this.elementCard.querySelector('.elements__image');
         this._elementsText = this.elementCard.querySelector('.elements__text');
-        this._like = this.elementCard.querySelector('.elements__like');
+        this._likeButton = this.elementCard.querySelector('.elements__like');
         this.elementCard.classList.remove('elements__delete');
         this._button = this.elementCard.querySelector('.elements__delete');
-        if (this._id != this._ownerId) {
-            this._button.style.display = 'none';
-        }
-        if (this._userId == this._ownerId) {
-            this._button.style.display = 'block';
+        if (this._userId !== this._ownerId) {
+            this._button.remove();
         }
         this._likesCount = this.elementCard.querySelector(".elements__amount-like");
         this._likesCount.textContent = this._likes.length;
@@ -43,17 +51,27 @@ export default class Card {
         this._elementsText.textContent = this._name;
     };
 
-    _toggleLike = () => {
-        this._like.classList.toggle("elements__like_active");
-    }
-
-    _deleteCard = () => {
+    deleteCard = () => {
         this.elementCard.remove()
     }
 
+    toggleLike = () => {
+        this._likeButton.classList.toggle("elements__like_active");
+    }
+
+    untoggleLike() {
+        this._likeButton.classList.remove("elements__like_active")
+    }
+
     _setEventHandlers = () => {
-        this._button.addEventListener("click", () => this._deleteCard())
-        this._like.addEventListener("click", () => this._toggleLike())
+        this._button.addEventListener("click", () => this._deleteCard)
+        this._likeButton.addEventListener("click", () => {
+            if (this._likeButton.classList.contains("elements__like_active")) {
+                this._dislike()
+            } else {
+                this._like()
+            }
+        })
         this._elementsImage.addEventListener("click", () =>
             this.handleCardClick(this._elementsImage, this._elementsText)
         )

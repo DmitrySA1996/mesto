@@ -16,9 +16,10 @@ const formImage = document.forms.form
 const formUpdateAvatar = document.forms.editAvatarForm
 
 /* Профиль */
-const editInputName = formProfile.elements.name;
-const editJobInput = formProfile.elements.about;
-const editAvatar = formUpdateAvatar.elements.avatar;
+//константы профиля
+const editInputName = document.querySelector(".profile__title");
+const editJobInput = document.querySelector(".profile__subtitle");
+const editAvatar = document.querySelector(".profile__image");
 
 const elementTemplate = document.querySelector('.element-template').content.querySelector('.elements__card');
 
