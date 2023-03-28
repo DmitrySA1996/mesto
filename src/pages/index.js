@@ -23,7 +23,7 @@ import PopupWithImage from "../components/PopupWithImage.js"
 import PopupWithForm from "../components/PopupWithForm.js"
 import PopupConfirmation from "../components/PopupConfirmation.js"
 import UserInfo from "../components/UserInfo.js"
-import API from "../components/API.js"  
+import API from "../components/API.js"
 
 const user = new UserInfo({
   name: editInputName,
@@ -87,7 +87,6 @@ function createCard(data) {
     async () => {
       try {
         const response = await api.addLike(data._id)
-        card.toggleLike();
         card.likesCount(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
@@ -96,7 +95,6 @@ function createCard(data) {
     async () => {
       try {
         const response = await api.removeLike(data._id)
-        card.untoggleLike();
         card.likesCount(response)
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
@@ -115,29 +113,41 @@ function openPopupImage(name, link) {
 }
 
 async function handleSubmitFormEditProfile(data) {
+  popupEdit.changeTextSubmitUsSave(popupEdit);
   try {
-    const userProfile= await api.editProfileUserInfo(data)
-    user.setUserInfo(userProfile)    
-    popupEdit.close()
-  } catch (error) {
-    return console.log(`Ошибка: ${error}`)
+    try {
+      const userProfile = await api.editProfileUserInfo(data)
+      user.setUserInfo(userProfile)
+      popupEdit.close()
+    } catch (error) {
+      return console.log(`Ошибка: ${error}`)
+    }
+  }
+  finally {
+    popupEdit.ResetSubmitTextToDefault(popupEdit)
   }
 }
 
 async function handleSubmitFormUpdateAvatar(data) {
+  popupAvatar.changeTextSubmitUsSave(popupAvatar);
   try {
-    const userProfile = await api.updateProfileUserAvatar(data)
-    user.setUserInfo(userProfile)
-    popupAvatar.close()
-  } catch (error) {
-    return console.log(`Ошибка: ${error}`)
+    try {
+      const userProfile = await api.updateProfileUserAvatar(data)
+      user.setUserInfo(userProfile)
+      popupAvatar.close()
+    }
+    catch (error) {
+      return console.log(`Ошибка: ${error}`)
+    }
+  } finally {
+    popupAvatar.ResetSubmitTextToDefault(popupAvatar)
   }
 }
 
 async function handleSubmitFormAddCard(data) {
   try {
     const newCard = await api.addNewCard(data)
-    cardList.addItem(createCard(newCard))    
+    cardList.addItem(createCard(newCard))
     popupAdd.close()
   } catch (error) {
     return console.log(`Ошибка: ${error}`)

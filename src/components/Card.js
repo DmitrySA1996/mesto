@@ -8,6 +8,7 @@ export default class Card {
         dislike,
         deleteCard
     ) {
+        this._data = data;
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes;
@@ -29,11 +30,12 @@ export default class Card {
         this._likeButton = this.elementCard.querySelector('.elements__like');
         this.elementCard.classList.remove('elements__delete');
         this._button = this.elementCard.querySelector('.elements__delete');
+        this._likesCount = this.elementCard.querySelector(".elements__amount-like");
         if (this._userId !== this._ownerId) {
             this._button.remove();
         }
-        this._likesCount = this.elementCard.querySelector(".elements__amount-like");
-        this._likesCount.textContent = this._likes.length;
+
+        this._likeOrDislike()
 
         this._nameCard();
         this._setEventHandlers();
@@ -42,7 +44,8 @@ export default class Card {
     };
 
     likesCount(res) {
-        this._likesCount.textContent = `${res.likes.length}`
+        this._likes = res.likes
+        this._likeOrDislike()
     }
 
     _nameCard = () => {
@@ -51,15 +54,26 @@ export default class Card {
         this._elementsText.textContent = this._name;
     };
 
+    _likeOrDislike() {
+        const likesUser = this._likes.some(like => like._id === this._userId)
+        if (likesUser) {
+            this._addLike()
+        }
+        else {
+            this._removeLike()
+        }
+        this._likesCount.textContent = this._likes.length
+    }
+
     deleteCard = () => {
         this.elementCard.remove()
     }
 
-    toggleLike = () => {
+    _addLike() {
         this._likeButton.classList.toggle("elements__like_active");
     }
 
-    untoggleLike() {
+    _removeLike() {
         this._likeButton.classList.remove("elements__like_active")
     }
 
