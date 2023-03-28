@@ -18,16 +18,8 @@
     transition: 0.5s ease-in-out;
   }
   
-  @media screen and (max-width: 680px) {
+  @media screen and (max-width: 597px) {
     .profile__edit-avatar {
-      width: 240px;
-      height: 240px;
-    }
-  }
-  
-  @media screen and (max-width: 440px) {
-    .profile__edit-avatar {
-      width: 120px;
-      height: 120px;
+      margin: 38px auto auto auto;
     }
   }

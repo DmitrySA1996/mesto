@@ -62,3 +62,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 /* -----------------------------------------------------------------------------------------*/
+
+*{
+    outline: 1px red solid;
+}
