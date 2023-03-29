@@ -124,7 +124,7 @@ async function handleSubmitFormEditProfile(data) {
     }
   }
   finally {
-    popupEdit.ResetSubmitTextToDefault(popupEdit)
+    popupEdit.resetSubmitTextToDefault(popupEdit)
   }
 }
 
@@ -140,17 +140,22 @@ async function handleSubmitFormUpdateAvatar(data) {
       return console.log(`Ошибка: ${error}`)
     }
   } finally {
-    popupAvatar.ResetSubmitTextToDefault(popupAvatar)
+    popupAvatar.resetSubmitTextToDefault(popupAvatar)
   }
 }
 
 async function handleSubmitFormAddCard(data) {
+  popupAdd.changeTextSubmitUsSave(popupAdd);
   try {
-    const newCard = await api.addNewCard(data)
-    cardList.addItem(createCard(newCard))
-    popupAdd.close()
-  } catch (error) {
-    return console.log(`Ошибка: ${error}`)
+    try {
+      const newCard = await api.addNewCard(data)
+      cardList.addItem(createCard(newCard))
+      popupAdd.close()
+    } catch (error) {
+      return console.log(`Ошибка: ${error}`)
+    }
+  } finally {
+    popupAdd.resetSubmitTextToDefault(popupAdd)
   }
 }
 

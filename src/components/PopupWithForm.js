@@ -27,7 +27,7 @@ export default class PopupWithForm extends Popup {
     popup._submit.textContent = "Сохранение..."
   }
 
-  ResetSubmitTextToDefault(popup) {
+  resetSubmitTextToDefault(popup) {
     popup._submit.textContent = "Сохранить"
   }
 
